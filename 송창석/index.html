@@ -3,9 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <title>search form</title>
   </head>
   <body>
+    <div id="wrap">
+        <div class="inner">
+            <div id="search">
+                <form name="form-search">
+                    <span class="input"><input type="text" placeholder="검색어 입력" id="search-input" autocomplete="off"></span>
+                    <div class="relate">
+                        <div class="word">
+                            <ul class="related_list">
+
+                            </ul>
+                        </div>
+                        <div class="close"><button type="button">닫기</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- 고정 : script body 내부에서 선언 (별도의 script 추가 가능)  -->
     <script src="./keyword.js"></script>
     <script src="./search.js"></script>
