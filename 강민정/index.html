@@ -1,13 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <!-- 고정 : script body 내부에서 선언 (별도의 script 추가 가능)  -->
-    <script src="./keyword.js"></script>
-    <script src="./search.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+  <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+  <header>
+    <div class="headerTop">
+      <div class="loginStatus">
+        <a href="#" class="logoAuction">AUCTION</a>
+        <ul>
+          <li><a href="#">로그인</a></li>
+          <li><a href="#">회원가입</a></li>
+          <li><a href="#">이용안내</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="searchWrapper">
+      <a href="#" class="logoEbay">ebay쇼핑</a>
+      <div class="searchForm">
+        <form method="get" action="">
+          <label for="inputSearch">
+            <input type="search" id="inputSearch" placeholder="검색어를 입력하세요.">
+          </label>
+          <button type="submit" class="buttonSearch">검색</button>
+          <div class="searchListWrap">
+            <ul></ul>
+          </div>
+        </form>
+      </div>
+    </div>
+  </header>
+  <div class="carouselSlide">
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+    </ul>
+  </div>
+<script src="./keyword.js"></script>
+<script src="./search.js"></script>
+</body>
 </html>
