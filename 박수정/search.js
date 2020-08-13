@@ -10,8 +10,13 @@ function resetKeywords() {
 
 function handleSubmit(e) {
     e.preventDefault()
+    let searchText = searchInput.value;
 
-    alert(`${e.target.innerText} 검색`);
+    if (e.target.className === 'keyword') {
+        searchText = e.target.innerText;
+    } 
+
+    alert(`${searchText} 검색`);
     searchInput.value = '';
     resetKeywords();
 };
