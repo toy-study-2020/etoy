@@ -12,7 +12,7 @@ function handleSubmit(e) {
     e.preventDefault()
     let searchText = searchInput.value;
 
-    if (e.target.className === 'keyword') {
+    if (e.target.classList.contains('keyword')) {
         searchText = e.target.innerText;
     } 
 
