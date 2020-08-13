@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import SearchPresenter from './SearchPresenter';
 
+type Data = { keyword: string[]; matchKeyword: string[] };
+
 const getFetch = async (url: string | undefined) => {
   const response = await axios.get(url!);
   return response.data;
@@ -9,7 +11,7 @@ const getFetch = async (url: string | undefined) => {
 
 const SearchContainer = () => {
   const [input, setInput] = useState('');
-  const [data, setData] = useState({
+  const [data, setData] = useState<Data>({
     keyword: [],
     matchKeyword: [],
   });
@@ -36,7 +38,7 @@ const SearchContainer = () => {
     const targetValue = e.currentTarget.value;
     setInput(targetValue);
     const { keyword } = data;
-    const matchList: any = [];
+    const matchList: string[] = [];
     keyword.forEach((item: any) => {
       if (item.slice(0, targetValue.length) === targetValue) {
         matchList.push(item);
