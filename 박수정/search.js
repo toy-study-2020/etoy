@@ -36,9 +36,10 @@ function loadToKeywords(enteredData) {
         return data.includes(enteredData);
     });
 
-    filteredKeyword.forEach(function(item) {
+    filteredKeyword.forEach((item, i) => {
         const splitItem = item.split(enteredData);
 
+        if (i > 10) return;
         emphasisingItem(splitItem, enteredData);
         recommendKeywordWrap.insertAdjacentHTML('beforeend', `<li><a href="#" class="keyword">${emphasisedItem}</a></li>`);
     });
