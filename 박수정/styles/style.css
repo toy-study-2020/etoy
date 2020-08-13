@@ -59,6 +59,10 @@ header .logo--ebay {
   border: 1px solid #bfbfbf;
 }
 
+.recommend-keyword.hidden {
+  display: none;
+}
+
 .recommend-keyword li a {
   display: block;
   height: 30px;
@@ -76,4 +80,17 @@ header .logo--ebay {
 .recommend-keyword li em {
   font-weight: bold;
   color: red;
+}
+
+.recommend-keyword__footer {
+  line-height: 30px;
+  height: 30px;
+  background: #f6f6f6;
+  text-align: right;
+  padding-right: 15px;
+}
+
+.recommend-keyword__footer button {
+  border: none;
+  background-color: transparent;
 }

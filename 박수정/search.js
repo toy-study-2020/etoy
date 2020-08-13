@@ -3,10 +3,13 @@ const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
 const searchBtn = document.querySelector('.search__btn');
 const recommendKeywordWrap = document.querySelector('.recommend-keyword');
+const recommendKeywordLi = document.querySelector('.recommend-keyword ul');
+const controlVisibleClass = 'hidden';
 let emphasisedItem = '';
 
-function resetKeywords() {
-    recommendKeywordWrap.innerHTML = '';
+function disabledResult() {
+    recommendKeywordLi.innerHTML = '';
+    addHiddenClass();
 };
 
 function handleSubmit(e) {
@@ -19,7 +22,7 @@ function handleSubmit(e) {
 
     alert(`${searchText} 검색`);
     searchInput.value = '';
-    resetKeywords();
+    disabledResult();
 };
 
 function emphasisingItem(arr, emphasisString) {
@@ -32,25 +35,45 @@ function emphasisingItem(arr, emphasisString) {
     });
 };
 
+function addHiddenClass() {
+    if (!recommendKeywordWrap.classList.contains(controlVisibleClass)) {
+        recommendKeywordWrap.classList.add(controlVisibleClass);
+    }
+}
+
+function removeHiddenClass() {
+    if (recommendKeywordWrap.classList.contains(controlVisibleClass)) {
+        recommendKeywordWrap.classList.remove(controlVisibleClass);
+    }
+}
+
 function loadToKeywords(enteredData) {
     const filteredKeyword = keyword.filter(data => {
         return data.includes(enteredData);
     });
+
+    if (!filteredKeyword.length) {
+        disabledResult();
+        return;
+    }
+
+    removeHiddenClass();
 
     filteredKeyword.forEach((item, i) => {
         const splitItem = item.split(enteredData);
 
         if (i > 10) return;
         emphasisingItem(splitItem, enteredData);
-        recommendKeywordWrap.insertAdjacentHTML('beforeend', `<li><a href="#" class="keyword">${emphasisedItem}</a></li>`);
+        recommendKeywordLi.insertAdjacentHTML('beforeend', `<li><a href="#" class="keyword">${emphasisedItem}</a></li>`);
     });
 };
 
 function handleInput() {
     const value = this.value;
 
-    resetKeywords();
-    if (value.length) loadToKeywords(value);
+    disabledResult();
+    if (!value.length) return;
+    loadToKeywords(value);
 };
 
 function init() {
@@ -58,7 +81,10 @@ function init() {
     searchForm.addEventListener('submit', handleSubmit);
     searchBtn.addEventListener('click', handleSubmit);
     document.addEventListener('click', e => {
-        if (e.target.className === 'keyword') handleSubmit(e);
+        if (e.target.classList.contains('keyword')) handleSubmit(e);
+    });
+    document.addEventListener('click', e => {
+        if (e.target.classList.contains('close__btn')) disabledResult();
     });
 };
 
