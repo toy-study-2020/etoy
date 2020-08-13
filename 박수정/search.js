@@ -57,7 +57,7 @@ function init() {
     searchInput.addEventListener('input', handleInput);
     searchForm.addEventListener('submit', handleSubmit);
     searchBtn.addEventListener('click', handleSubmit);
-    document.addEventListener('click', function (e) {
+    document.addEventListener('click', e => {
         if (e.target.className === 'keyword') handleSubmit(e);
     });
 };
