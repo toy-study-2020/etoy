@@ -4,13 +4,16 @@ const searchInput = document.getElementById('search-input');
 const recommendKeywordWrap = document.querySelector('.recommend-keyword');
 let emphasisedItem = '';
 
-function handleSubmit(e) {
-    e.preventDefault()
-    searchInput.value = '';
-};
-
 function resetKeywords() {
     recommendKeywordWrap.innerHTML = '';
+};
+
+function handleSubmit(e) {
+    e.preventDefault()
+
+    alert(`${e.target.innerText} 검색`);
+    searchInput.value = '';
+    resetKeywords();
 };
 
 function emphasisingItem(arr, emphasisString) {
@@ -32,7 +35,7 @@ function loadToKeywords(enteredData) {
         const splitItem = item.split(enteredData);
 
         emphasisingItem(splitItem, enteredData);
-        recommendKeywordWrap.insertAdjacentHTML('beforeend', `<li><a href="#">${emphasisedItem}</a></li>`);
+        recommendKeywordWrap.insertAdjacentHTML('beforeend', `<li><a href="#" class="keyword">${emphasisedItem}</a></li>`);
     });
 };
 
@@ -44,8 +47,12 @@ function handleInput() {
 };
 
 function init() {
-    searchForm.addEventListener('submit', handleSubmit);
     searchInput.addEventListener('input', handleInput);
+    searchForm.addEventListener('submit', handleSubmit);
+
+    document.addEventListener('click', function (e) {
+        if (e.target.className === 'keyword') handleSubmit(e);
+    });
 };
 
 init();
