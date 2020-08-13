@@ -7,7 +7,7 @@ const recommendKeywordLi = document.querySelector('.recommend-keyword ul');
 const controlVisibleClass = 'hidden';
 let emphasisedItem = '';
 
-function disabledResult() {
+function resetResult() {
     recommendKeywordLi.innerHTML = '';
     addHiddenClass();
 };
@@ -27,7 +27,7 @@ function handleSubmit(e) {
 
     alert(`${searchText} 검색`);
     searchInput.value = '';
-    disabledResult();
+    resetResult();
 };
 
 function emphasisingItem(arr, emphasisString) {
@@ -58,7 +58,7 @@ function loadToKeywords(enteredData) {
     });
 
     if (!filteredKeyword.length) {
-        disabledResult();
+        resetResult();
         return;
     }
 
@@ -76,7 +76,7 @@ function loadToKeywords(enteredData) {
 function handleInput() {
     const value = this.value;
 
-    disabledResult();
+    resetResult();
     if (!value.length) return;
     loadToKeywords(value);
 };
@@ -89,7 +89,7 @@ function init() {
         if (e.target.classList.contains('keyword')) handleSubmit(e);
     });
     document.addEventListener('click', e => {
-        if (e.target.classList.contains('close__btn')) disabledResult();
+        if (e.target.classList.contains('close__btn')) resetResult();
     });
 };
 
