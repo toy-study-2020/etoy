@@ -1,7 +1,12 @@
 import React from 'react';
+import Search from './Components/Search';
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <Search />
+    </>
+  );
 }
 
 export default App;
