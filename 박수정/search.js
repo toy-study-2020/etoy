@@ -18,7 +18,12 @@ function handleSubmit(e) {
 
     if (e.target.classList.contains('keyword')) {
         searchText = e.target.innerText;
-    } 
+    }
+
+    if (searchText === '') {
+        alert('검색어를 입력해주세요.');
+        return;
+    }
 
     alert(`${searchText} 검색`);
     searchInput.value = '';
