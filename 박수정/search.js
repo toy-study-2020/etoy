@@ -1,6 +1,7 @@
 // Search TODO
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
+const searchBtn = document.querySelector('.search__btn');
 const recommendKeywordWrap = document.querySelector('.recommend-keyword');
 let emphasisedItem = '';
 
@@ -55,7 +56,7 @@ function handleInput() {
 function init() {
     searchInput.addEventListener('input', handleInput);
     searchForm.addEventListener('submit', handleSubmit);
-
+    searchBtn.addEventListener('click', handleSubmit);
     document.addEventListener('click', function (e) {
         if (e.target.className === 'keyword') handleSubmit(e);
     });
