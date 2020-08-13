@@ -17,8 +17,18 @@
   outline: 1px solid red;
 }
 
-.recommend-keyword li {
+.recommend-keyword li a {
   display: block;
+  height: 30px;
+  padding-left: 10px;
+  line-height: 30px;
+  font-size: 13px;
+  color: #666;
+  text-decoration: none;
+}
+
+.recommend-keyword li a:hover {
+  background-color: #efefef;
 }
 
 .recommend-keyword li em {
