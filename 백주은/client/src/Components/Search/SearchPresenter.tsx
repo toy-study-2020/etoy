@@ -9,7 +9,7 @@ interface IProps {
   onFocus: any;
   onBlur: any;
   focus: boolean;
-  ref: React.RefObject<HTMLDivElement>;
+  childRef: React.RefObject<HTMLDivElement>;
   keyword: { keyword?: string[]; matchKeyword?: string[] };
 }
 
@@ -26,9 +26,9 @@ const SearchResultArea = () => {
   );
 };
 
-const SearchPresenter: React.SFC<IProps> = ({ onSubmit, onChange, onFocus, focus, keyword, ref }) => {
+const SearchPresenter: React.SFC<IProps> = ({ onSubmit, onChange, onFocus, focus, keyword, childRef }) => {
   return (
-    <Container ref={ref}>
+    <Container ref={childRef}>
       <Form onSubmit={onSubmit}>
         <SaerchForm>
           <Input onChange={onChange} onClick={onFocus} />

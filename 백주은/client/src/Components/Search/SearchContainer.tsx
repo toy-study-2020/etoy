@@ -74,7 +74,7 @@ const SearchContainer = () => {
       onBlur={onBlur}
       focus={focus}
       keyword={data}
-      ref={searchEl}
+      childRef={searchEl}
     />
   );
 };
