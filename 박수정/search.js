@@ -12,6 +12,12 @@ function resetResult() {
     addHiddenClass();
 };
 
+function search(keyword) {
+    alert(`${keyword} 검색`);
+    searchInput.value = '';
+    resetResult();
+}
+
 function handleSubmit(e) {
     e.preventDefault()
     let searchText = searchInput.value;
@@ -25,9 +31,7 @@ function handleSubmit(e) {
         return;
     }
 
-    alert(`${searchText} 검색`);
-    searchInput.value = '';
-    resetResult();
+    search(searchText);
 };
 
 function emphasisingItem(arr, emphasisString) {
@@ -52,6 +56,16 @@ function removeHiddenClass() {
     }
 }
 
+function appendHTML(keyword, data) {
+    keyword.forEach((item, i) => {
+        const splitItem = item.split(data);
+
+        if (i > 10) return;
+        emphasisingItem(splitItem, data);
+        recommendKeywordLi.insertAdjacentHTML('beforeend', `<li><a href="#" class="keyword">${emphasisedItem}</a></li>`);
+    });
+}
+
 function loadToKeywords(enteredData) {
     const filteredKeyword = keyword.filter(data => {
         return data.includes(enteredData);
@@ -63,14 +77,7 @@ function loadToKeywords(enteredData) {
     }
 
     removeHiddenClass();
-
-    filteredKeyword.forEach((item, i) => {
-        const splitItem = item.split(enteredData);
-
-        if (i > 10) return;
-        emphasisingItem(splitItem, enteredData);
-        recommendKeywordLi.insertAdjacentHTML('beforeend', `<li><a href="#" class="keyword">${emphasisedItem}</a></li>`);
-    });
+    appendHTML(filteredKeyword, enteredData);
 };
 
 function handleInput() {
