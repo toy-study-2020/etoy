@@ -122,6 +122,7 @@ function handleInput() {
 
 function init() {
     searchInput.addEventListener('input', handleInput);
+    searchInput.addEventListener('blur', resetResult);
     searchForm.addEventListener('submit', handleSubmit);
     searchBtn.addEventListener('click', handleSubmit);
     document.addEventListener('click', e => {
