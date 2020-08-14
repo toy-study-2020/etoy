@@ -91,3 +91,34 @@ const search = (function() {
     this.resultWrap.classList.remove(this.toggleClass);
     window.addEventListener('click', this.handlerSearch);
   };
+
+  Search.prototype.createElement = function(el) {
+    return document.createElement(el);
+  };
+
+  Search.prototype.appendResult = function(wrapper, direction, el, data) {
+    if (data) {
+      el.innerText = data;
+    }
+    this.result.insertAdjacentElement(direction, el);
+  };
+
+  Search.prototype.resultInit = function() {
+    this.wordIndex = this.wordFirstIndex;
+    this.listArray = [];
+    this.result.innerHTML = '';
+  };
+
+  Search.prototype.recommend = function() {
+    this.resultInit();
+
+    for(let i = 0; i < this.lengthData; i++) {
+      if (this.data[i].toLowerCase().indexOf(this.keyword) > -1) {
+        if (this.listArray.length < this.listLimit) {
+          this.listArray.push(this.data[i]);
+          this.list = this.createElement(this.resultEl);
+          this.appendResult(this.result, 'afterbegin', this.list, this.data[i]);
+        }
+      }
+    }
+  };
