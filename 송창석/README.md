@@ -2,7 +2,7 @@
 
 # 생성방법
 ``` javascript
-    const search = new formSeach('#search');
+    const search = new formSearch('#search', 10);
     search.setInit();
 ```
 
@@ -20,4 +20,4 @@
 > form submit 이벤트를 잘 몰라서 수호님 스터디 중에 만들었던걸 참고해서 만들어 뒀는데 이게 맞는지 의문...
 
 # 설계도
-![설계도03](./설계도03.png)
+![설계도03  ](./설계도03.png)
