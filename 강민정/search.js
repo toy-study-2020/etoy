@@ -30,4 +30,11 @@ const search = (function() {
     this.wordList = null;
     this.wordFirstIndex = 0;
     this.toggleClass = 'active';
-  };
+  };  Search.prototype.shuffle = function(data) {
+    this.shuffle(this.data);
+    for (let i = data.length - 1; i > 0; i--) {
+      let randomMath = Math.floor(Math.random() * (i + 1));
+      let temp = data[i];
+      data[i] = data[randomMath];
+      data[randomMath] = temp;
+    }
