@@ -11,7 +11,9 @@ const getFetch = async (url: string | undefined) => {
 
 const SearchContainer = () => {
   const searchEl = useRef<HTMLDivElement>(null);
+  const [keyIndex, setKeyIndex] = useState<number>(0);
   const [input, setInput] = useState('');
+  const [lastly, setLastly] = useState<string[]>([]);
   const [inputFocus, setInputFocus] = useState(false);
   const [focus, setFocus] = useState(false);
   const [data, setData] = useState<Data>({
@@ -48,10 +50,18 @@ const SearchContainer = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log(input);
-    console.log(data.matchKeyword);
   };
 
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
+    if (e.keyCode === 40) {
+      setInput(data.matchKeyword[keyIndex]);
+      keyIndex === data.matchKeyword.length - 1 ? setKeyIndex(0) : setKeyIndex(keyIndex + 1);
+    }
+    if (e.keyCode === 38) {
+      setInput(data.matchKeyword[keyIndex]);
+      keyIndex === 0 ? setKeyIndex(data.matchKeyword.length - 1) : setKeyIndex(keyIndex - 1);
+    }
+  };
   const onChange = (e: React.FormEvent<HTMLInputElement>) => {
     const targetValue = e.currentTarget.value;
     setInput(targetValue);
@@ -82,10 +92,13 @@ const SearchContainer = () => {
       onChange={onChange}
       onFocus={onFocus}
       onBlur={onBlur}
+      value={input}
       focus={focus}
       inputFocus={inputFocus}
       keyword={data}
       childRef={searchEl}
+      onKeyDown={onKeyDown}
+      keyIndex={keyIndex}
     />
   );
 };

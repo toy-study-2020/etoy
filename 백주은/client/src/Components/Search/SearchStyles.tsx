@@ -47,8 +47,9 @@ export const SearchList = styled.div`
 `;
 export const SearchResult = styled.div``;
 export const SearchItem = styled.div`
-  & + & {
-    margin-top: 10px;
+  padding: 5px;
+  &.keyword-on {
+    background: #eee;
   }
 `;
 
