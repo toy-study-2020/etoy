@@ -122,3 +122,38 @@ const search = (function() {
       }
     }
   };
+
+  Search.prototype.selectResult = function(key) {
+    this.wordList = this.result.querySelectorAll('li');
+    this.wordLength = this.wordList.length;
+    this.wordLastIndex = this.wordLength - 1;
+    if (this.wordLength === this.wordFirstIndex) {
+      return;
+    }
+    this.moveWord(key === 40 ? 'down' : 'up');
+  };
+
+  Search.prototype.moveWord = function(direction) {
+    if (!this.result.querySelector('.' + this.toggleClass)) {
+      this.wordList[this.wordFirstIndex].classList.add(this.toggleClass);
+      return;
+    }
+
+    for (let i = 0; i < this.wordLength; i++) {
+      this.wordList[i].classList.remove(this.toggleClass);
+    }
+
+    if (direction === 'down') {
+      this.wordIndex = this.wordIndex === this.wordLastIndex ? this.wordFirstIndex : ++this.wordIndex;
+    } else {
+      this.wordIndex = this.wordIndex === this.wordFirstIndex ? this.wordLastIndex : --this.wordIndex;
+    }
+
+    this.wordList[this.wordIndex].classList.add(this.toggleClass);
+  };
+
+
+  return {
+    Search
+  }
+})();
