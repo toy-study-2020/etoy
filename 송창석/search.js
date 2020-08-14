@@ -1,9 +1,9 @@
 // Search TODO
 
-class formSeach {
-    constructor (selector, count) {
+class formSearch {
+    constructor (selector, maxLength) {
         this.selector = selector;
-        this.count = count;
+        this.maxLength = maxLength;
     }
     setInit() {
         const searchEl = {
@@ -12,86 +12,63 @@ class formSeach {
             input: document.querySelector("#search-input"),
             close: document.querySelector(".close button"),
             list: document.querySelector(".related_list"),
-            item: null
+            maxLength: this.maxLength,
+            items: null,
+            focusIndex: null
         }
-        
         this.setEvent(searchEl);
     }
     setEvent(searchEl) {
         searchEl.form.addEventListener('submit', (event) => {
             event.preventDefault();
-            console.log(searchEl.input.value);
+            if(searchEl.input.value === '') alert(`검색어를 입력해주세요.`);
+            if(searchEl.input.value) alert(`${searchEl.input.value} 검색`);
         });
         
-        let actIdx = null;
         searchEl.input.addEventListener('keyup', (event) => {
-            const value = event.target.value;
-            const components = keyFilter(value);
-            renderItem(searchEl, components);
-
-            if(value) showRelateList(searchEl);
-            if(value === '') hideRelateList(searchEl);
-            if(event.keyCode === 40) {
-                searchEl.item[0].focus();
-                searchEl.input.value = searchEl.item[0].innerText;
-            };
-
-            actIdx = 0;
-        });
-        
-        searchEl.list.addEventListener('keyup', (event) => {
-            if(event.keyCode === 40) actIdx = actIdx + 1;
-            if(event.keyCode === 38) actIdx = actIdx - 1;
             if(event.keyCode === 40 || event.keyCode === 38) {
-                focusList(actIdx, searchEl);
+                if (event.keyCode === 40) searchEl.focusIndex = searchEl.focusIndex >= searchEl.items.length - 1 ? 0 : searchEl.focusIndex + 1;
+                if (event.keyCode === 38) searchEl.focusIndex = searchEl.focusIndex <= 0 ? searchEl.items.length - 1 : searchEl.focusIndex - 1;
+                focusList(searchEl.focusIndex, searchEl.items, searchEl.input);
+            } else if(event.keyCode != 13) {
+                const components = keyFilter(event.target.value, searchEl.maxLength);
+                renderItems(searchEl, components);
+                searchEl.focusIndex = searchEl.items.length;
             }
-        })
 
-        searchEl.close.addEventListener('click', () => {
-            hideRelateList(searchEl)
-        })
+            if(event.target.value) showRelateList(searchEl.wrapper);
+            if(event.target.value === '') hideRelateList(searchEl.wrapper);
+        });
+
+        searchEl.close.addEventListener('click', () => hideRelateList(searchEl.wrapper));
     }
 }
 
-const keyFilter = (value) => {
-    let filtered = keyword.filter(word => {
+const keyFilter = (value, maxLength) => {
+    const filtered = keyword.filter(word => {
         if(word.substring(0, value.length).indexOf(value) > -1) return word
-    })
-    filtered = filtered.slice(0, filtered.length);
-    if(filtered.length > 10) filtered = filtered.slice(0, 10);
+    }).slice(0, maxLength);
     
     let renderGroup = [];
-    for(let i = 0; i < filtered.length; i++) {
-        renderGroup += `<li data-idx="${i}"><button>${filtered[i]}</button></li>`
-    }
-    
+    for(let i = 0; i < filtered.length; i++) renderGroup += `<li data-idx="${i}"><a href="#n">${filtered[i]}</a></li>`;
     return renderGroup;
 }
 
-const renderItem = (el, components) => {
+const renderItems = (el, components) => {
     el.list.innerHTML = components;
-    el.item = el.list.querySelectorAll("button");
+    el.items = el.list.querySelectorAll("a");
 }
 
-const focusList = (idx, el) => {
-    if(idx < 0 || idx >= el.item.length) {
-        el.input.focus();
-        return hideRelateList(el);
-    };
-    if(0 < idx < el.item.length) {
-        el.input.value = el.item[idx].innerText
-        return el.item[idx].focus();
-    };
+const focusList = (idx, items, input) => {
+    items.forEach(item => item.classList.remove('focused'));
+    items[idx].classList.add('focused');
+    input.value = items[idx].innerText;
 }
 
-const showRelateList = (el) => {
-    el.wrapper.classList.add("has_value");
-}
-const hideRelateList = (el) => {
-    el.wrapper.classList.remove("has_value");
-}
+const showRelateList = (wrapper) => wrapper.classList.add("has_value");
+const hideRelateList = (wrapper) => wrapper.classList.remove("has_value");
 
 
 
-const search = new formSeach('#search');
+const search = new formSearch('#search', 10);
 search.setInit();
