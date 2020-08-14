@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SearchPresenter from './SearchPresenter';
 
 type Data = { keyword: string[]; matchKeyword: string[] };
@@ -10,7 +10,9 @@ const getFetch = async (url: string | undefined) => {
 };
 
 const SearchContainer = () => {
+  const searchEl = useRef<HTMLDivElement>(null);
   const [input, setInput] = useState('');
+  const [focus, setFocus] = useState(false);
   const [data, setData] = useState<Data>({
     keyword: [],
     matchKeyword: [],
@@ -18,6 +20,9 @@ const SearchContainer = () => {
 
   useEffect(() => {
     getKeyword();
+    window.addEventListener('click', ({ target }) => {
+      if (!searchEl.current?.contains(target as Element)) setFocus(false);
+    });
   }, []);
 
   const getKeyword = async () => {
@@ -28,6 +33,9 @@ const SearchContainer = () => {
     });
   };
 
+  const onFocus = () => setFocus(true);
+  const onBlur = () => setFocus(false);
+
   const onSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     console.log(input);
@@ -37,6 +45,7 @@ const SearchContainer = () => {
   const onChange = (e: React.FormEvent<HTMLInputElement>) => {
     const targetValue = e.currentTarget.value;
     setInput(targetValue);
+    setFocus(false);
     const { keyword } = data;
     const matchList: string[] = [];
     keyword.forEach((item: any) => {
@@ -48,14 +57,26 @@ const SearchContainer = () => {
       ...data,
       matchKeyword: matchList,
     });
-    if (!targetValue)
+    if (!targetValue) {
       setData({
         ...data,
         matchKeyword: [],
       });
+      setFocus(true);
+    }
   };
 
-  return <SearchPresenter onSubmit={onSubmit} onChange={onChange} keyword={data} />;
+  return (
+    <SearchPresenter
+      onSubmit={onSubmit}
+      onChange={onChange}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      focus={focus}
+      keyword={data}
+      ref={searchEl}
+    />
+  );
 };
 
 export default SearchContainer;
