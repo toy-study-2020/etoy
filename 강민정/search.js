@@ -45,6 +45,21 @@ const search = (function() {
       data[i] = data[randomMath];
       data[randomMath] = temp;
     }
+  };
+
+  Search.prototype.handlerSearch = function() {
+    if (this.isOpened) {
+      this.target = window.event.target;
+      while (this.target !== undefined && this.target.parentNode) {
+        if (this.target === this.wrapper) {
+          return false;
+        }
+        this.target = this.target.parentNode;
+      }
+      this.close();
+    }
+  };
+
   Search.prototype.open = function() {
     this.isOpened = true;
     this.keyword = this.input.value.toLowerCase();
