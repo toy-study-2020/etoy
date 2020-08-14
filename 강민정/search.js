@@ -32,9 +32,36 @@ const search = (function() {
     this.toggleClass = 'active';
   };  Search.prototype.shuffle = function(data) {
     this.shuffle(this.data);
+    this.input.addEventListener('keyup', this.open.bind(this));
+    this.input.addEventListener('focus', this.open.bind(this));
     for (let i = data.length - 1; i > 0; i--) {
       let randomMath = Math.floor(Math.random() * (i + 1));
       let temp = data[i];
       data[i] = data[randomMath];
       data[randomMath] = temp;
     }
+  Search.prototype.open = function() {
+    this.isOpened = true;
+    this.keyword = this.input.value.toLowerCase();
+
+    if (this.keyword === '') {
+      this.close();
+      return;
+    }
+
+
+    if (event.keyCode === 40 || event.keyCode === 38) {
+      this.selectResult(event.keyCode);
+      return;
+    }
+
+    this.resultWrap.classList.add(this.toggleClass);
+    this.recommend();
+
+    if (this.result.querySelectorAll('li').length === this.wordFirstIndex) {
+      this.close();
+      return;
+    }
+
+    window.addEventListener('click', this.handlerSearch.bind(this));
+  };
