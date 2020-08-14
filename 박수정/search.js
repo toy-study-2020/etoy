@@ -3,13 +3,14 @@ const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
 const searchBtn = document.querySelector('.search__btn');
 const recommendKeywordWrap = document.querySelector('.recommend-keyword');
-const recommendKeywordLi = document.querySelector('.recommend-keyword ul');
+const recommendKeywordLists = document.getElementById('recommend-keyword__lists');
 const controlVisibleClass = 'hidden';
 let emphasisedItem = '';
 
 function resetResult() {
-    recommendKeywordLi.innerHTML = '';
+    recommendKeywordLists.innerHTML = '';
     expendResult(false);
+    searchInput.removeAttribute('aria-activedescendant');
 };
 
 function search(keyword) {
@@ -76,8 +77,9 @@ function appendHTML(keyword, data) {
         const splitItem = item.split(data);
 
         if (i > 10) return;
+
         emphasisingItem(splitItem, data);
-        recommendKeywordLi.insertAdjacentHTML('beforeend', `<li><a href="#" class="keyword">${emphasisedItem}</a></li>`);
+        recommendKeywordLists.insertAdjacentHTML('beforeend', `<li id="list${i}" role="option"><a href="#" class="keyword" tabindex="-1" role=”none”>${emphasisedItem}</a></li>`);
     });
 };
 
@@ -95,12 +97,27 @@ function loadToKeywords(enteredData) {
     appendHTML(filteredKeyword, enteredData);
 };
 
+function setAriaSelected() {
+    const characters = [...recommendKeywordLists.children];
+
+    recommendKeywordLists.addEventListener('click', e => {
+        const option = e.target.closest('li');
+
+        if (!option) return;
+
+        searchInput.setAttribute('aria-activedescendant', option.id);
+        characters.forEach(element => element.removeAttribute('aria-selected'));
+        option.setAttribute('aria-selected', true);
+    })
+}
+
 function handleInput() {
     const value = this.value;
 
     resetResult();
     if (!value.length) return;
     loadToKeywords(value);
+    setAriaSelected();
 };
 
 function init() {

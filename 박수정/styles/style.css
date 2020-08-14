@@ -73,7 +73,7 @@ header .logo--ebay {
   text-decoration: none;
 }
 
-.recommend-keyword li a:hover {
+.recommend-keyword li a:focus, .recommend-keyword li a:hover {
   background-color: #efefef;
 }
 

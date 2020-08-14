@@ -12,15 +12,24 @@
       <a href="#" class="logo--ebay">ebay쇼핑</a>
       <div class="search">
         <form action="" id="search-form">
-          <input autocomplete="off" type="text" id="search-input" role="combobox" aria-expanded="false" placeholder="한글, 영어, 상품번호로 검색하세요.">
+          <input
+          type="text"
+          id="search-input"
+          role="combobox"
+          aria-expanded="false"
+          placeholder="한글, 영어, 상품번호로 검색하세요."
+          autocomplete="off"
+          aria-autocomplete="both"
+          aria-owns="recommend-keyword__lists"
+          aria-activedescendant="">
           <button type="button" class="search__btn">검색하기</button>
-        </form>
-        <div class="recommend-keyword hidden">
-          <ul></ul>
-          <div class="recommend-keyword__footer">
-            <button type="button" class="close__btn">닫기 X</button>
+          <div class="recommend-keyword hidden">
+            <ul id="recommend-keyword__lists" role="listbox"></ul>
+            <div class="recommend-keyword__footer">
+              <button type="button" class="close__btn">닫기 X</button>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     </header>
 
