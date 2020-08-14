@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { Container, SaerchForm, SearchList, Form, Input, Button } from './SearchStyles';
+import { Container, SaerchForm, SearchList, SearchResult, SearchItem, Form, Input, Button } from './SearchStyles';
 
 interface IProps {
   onSubmit: any;
@@ -9,6 +9,7 @@ interface IProps {
   onFocus: any;
   onBlur: any;
   focus: boolean;
+  inputFocus: boolean;
   childRef: React.RefObject<HTMLDivElement>;
   keyword: { keyword?: string[]; matchKeyword?: string[] };
 }
@@ -26,7 +27,7 @@ const SearchResultArea = () => {
   );
 };
 
-const SearchPresenter: React.SFC<IProps> = ({ onSubmit, onChange, onFocus, focus, keyword, childRef }) => {
+const SearchPresenter: React.SFC<IProps> = ({ onSubmit, onChange, onFocus, focus, inputFocus, keyword, childRef }) => {
   return (
     <Container ref={childRef}>
       <Form onSubmit={onSubmit}>
@@ -39,11 +40,18 @@ const SearchPresenter: React.SFC<IProps> = ({ onSubmit, onChange, onFocus, focus
           </Button>
         </SaerchForm>
       </Form>
-      <SearchList>
-        {focus && <SearchResultArea />}
-        {keyword.matchKeyword &&
-          keyword.matchKeyword.map((item: string, index: number) => <div key={index}>{item}</div>)}
-      </SearchList>
+      {inputFocus && (
+        <SearchList>
+          {focus && <SearchResultArea />}
+          {keyword.matchKeyword && (
+            <SearchResult>
+              {keyword.matchKeyword.map((item: string, index: number) => (
+                <SearchItem key={index}>{item}</SearchItem>
+              ))}
+            </SearchResult>
+          )}
+        </SearchList>
+      )}
     </Container>
   );
 };

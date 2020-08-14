@@ -12,6 +12,7 @@ const getFetch = async (url: string | undefined) => {
 const SearchContainer = () => {
   const searchEl = useRef<HTMLDivElement>(null);
   const [input, setInput] = useState('');
+  const [inputFocus, setInputFocus] = useState(false);
   const [focus, setFocus] = useState(false);
   const [data, setData] = useState<Data>({
     keyword: [],
@@ -21,7 +22,10 @@ const SearchContainer = () => {
   useEffect(() => {
     getKeyword();
     window.addEventListener('click', ({ target }) => {
-      if (!searchEl.current?.contains(target as Element)) setFocus(false);
+      if (!searchEl.current?.contains(target as Element)) {
+        setFocus(false);
+        setInputFocus(false);
+      }
     });
   }, []);
 
@@ -33,7 +37,10 @@ const SearchContainer = () => {
     });
   };
 
-  const onFocus = () => setFocus(true);
+  const onFocus = () => {
+    setFocus(true);
+    setInputFocus(true);
+  };
   const onBlur = () => setFocus(false);
 
   const onSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
@@ -73,6 +80,7 @@ const SearchContainer = () => {
       onFocus={onFocus}
       onBlur={onBlur}
       focus={focus}
+      inputFocus={inputFocus}
       keyword={data}
       childRef={searchEl}
     />
