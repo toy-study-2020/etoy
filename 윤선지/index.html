@@ -3,9 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Search Form</title>
+    <link rel="stylesheet" href="./search.css">
   </head>
   <body>
+    <div class="search_area">
+      <div class="search_text_bx">
+        <label><input type="text" class="inp_text" placeholder="검색어를 입력하세요."></label>
+      </div>
+      
+      <div class="search_list_area hidden">
+        <div class="list_bx keyword_list_bx hidden">
+          <p class="title">실시간 검색어</p>
+          <ul class="keyword_list">
+            <li><a href="#">1. 실시간 검색</a></li>
+            <li><a href="#">2. 실시간 검색</a></li>
+            <li><a href="#">3. 실시간 검색</a></li>
+            <li><a href="#">4. 실시간 검색</a></li>
+            <li><a href="#">5. 실시간 검색</a></li>
+            <li><a href="#">6. 실시간 검색</a></li>
+            <li><a href="#">7. 실시간 검색</a></li>
+            <li><a href="#">8. 실시간 검색</a></li>
+            <li><a href="#">9. 실시간 검색</a></li>
+            <li><a href="#">10. 실시간 검색</a></li>
+          </ul>
+        </div>
+
+        <div class="list_bx search_list_bx hidden">
+          <ul class="search_list">
+          </ul>
+        </div>
+
+        <button type="button" class="btn_close">닫기</button>
+      </div>
+    </div>
     <!-- 고정 : script body 내부에서 선언 (별도의 script 추가 가능)  -->
     <script src="./keyword.js"></script>
     <script src="./search.js"></script>
