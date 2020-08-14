@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect, useRef } from 'react';
 import SearchPresenter from './SearchPresenter';
 
-type Data = { keyword: string[]; matchKeyword: string[] };
+type Data = { keyword: string[]; matchKeyword: string[]; bestKeyword: string[] };
 
 const getFetch = async (url: string | undefined) => {
   const response = await axios.get(url!);
@@ -17,6 +17,7 @@ const SearchContainer = () => {
   const [data, setData] = useState<Data>({
     keyword: [],
     matchKeyword: [],
+    bestKeyword: [],
   });
 
   useEffect(() => {
@@ -30,10 +31,12 @@ const SearchContainer = () => {
   }, [inputFocus]);
 
   const getKeyword = async () => {
-    const data = await getFetch(process.env.REACT_APP_KEYWORD_API);
+    const responseKeyword = await getFetch(process.env.REACT_APP_KEYWORD_API);
+    const responseBestKeyword = await getFetch(process.env.REACT_APP_BEST_KEYWORD_API);
     return setData({
       ...data,
-      keyword: data.keyword,
+      keyword: responseKeyword.keyword,
+      bestKeyword: responseBestKeyword.bestKeyword,
     });
   };
 
