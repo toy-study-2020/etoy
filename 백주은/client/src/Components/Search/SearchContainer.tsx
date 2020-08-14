@@ -27,7 +27,7 @@ const SearchContainer = () => {
         setInputFocus(false);
       }
     });
-  }, []);
+  }, [inputFocus]);
 
   const getKeyword = async () => {
     const data = await getFetch(process.env.REACT_APP_KEYWORD_API);
