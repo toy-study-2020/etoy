@@ -30,10 +30,15 @@ const search = (function() {
     this.wordList = null;
     this.wordFirstIndex = 0;
     this.toggleClass = 'active';
-  };  Search.prototype.shuffle = function(data) {
+
     this.shuffle(this.data);
+
     this.input.addEventListener('keyup', this.open.bind(this));
     this.input.addEventListener('focus', this.open.bind(this));
+    this.form.addEventListener('submit', this.submit.bind(this));
+  };
+
+  Search.prototype.shuffle = function(data) {
     for (let i = data.length - 1; i > 0; i--) {
       let randomMath = Math.floor(Math.random() * (i + 1));
       let temp = data[i];
@@ -64,4 +69,10 @@ const search = (function() {
     }
 
     window.addEventListener('click', this.handlerSearch.bind(this));
+  };
+
+  Search.prototype.close = function() {
+    this.isOpened = false;
+    this.resultWrap.classList.remove(this.toggleClass);
+    window.addEventListener('click', this.handlerSearch);
   };
