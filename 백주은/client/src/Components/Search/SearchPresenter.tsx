@@ -28,13 +28,15 @@ interface IProps {
   childRef: React.RefObject<HTMLDivElement>;
   keyword: { keyword?: string[]; matchKeyword?: string[]; bestKeyword?: string[] };
   keyIndex: number;
+  lastly: string[];
 }
 
 interface IPropsResult {
   bestKeyword: any;
+  lastly: string[];
 }
 
-const SearchResultArea: React.SFC<IPropsResult> = ({ bestKeyword }) => {
+const SearchResultArea: React.SFC<IPropsResult> = ({ bestKeyword, lastly }) => {
   const bestfive = bestKeyword.slice(0, 5);
   const rest = bestKeyword.slice(5, 10);
   return (
@@ -60,7 +62,12 @@ const SearchResultArea: React.SFC<IPropsResult> = ({ bestKeyword }) => {
           ))}
         </div>
       </TabContent>
-      <TabContent>최근검색어 출력</TabContent>
+      <TabContent>
+        {!lastly.length && <span>최근 검색어가 없습니다.</span>}
+        {lastly.map((item: string, index: number) => (
+          <div key={index}>{item}</div>
+        ))}
+      </TabContent>
     </Tabs>
   );
 };
@@ -76,6 +83,7 @@ const SearchPresenter: React.SFC<IProps> = ({
   value,
   childRef,
   keyIndex,
+  lastly,
 }) => {
   return (
     <Container ref={childRef}>
@@ -97,7 +105,7 @@ const SearchPresenter: React.SFC<IProps> = ({
       </Form>
       {inputFocus && (
         <SearchList>
-          {focus && <SearchResultArea bestKeyword={keyword.bestKeyword} />}
+          {focus && <SearchResultArea bestKeyword={keyword.bestKeyword} lastly={lastly} />}
           {keyword.matchKeyword && (
             <SearchResult>
               {keyword.matchKeyword.map((item: string, index: number) => (
