@@ -24,6 +24,8 @@ const SearchContainer = () => {
 
   useEffect(() => {
     getKeyword();
+    const getLocalStorage: any = localStorage.getItem('lastly') ? localStorage.getItem('lastly') : '';
+    getLocalStorage && setLastly([...JSON.parse(getLocalStorage)]);
     window.addEventListener('click', ({ target }) => {
       if (!searchEl.current?.contains(target as Element)) {
         setFocus(false);
@@ -52,6 +54,7 @@ const SearchContainer = () => {
     e.preventDefault();
     const getLocalStorage: any = localStorage.getItem('lastly') ? localStorage.getItem('lastly') : '';
     localStorage.setItem('lastly', JSON.stringify([...JSON.parse(getLocalStorage), input]));
+    setLastly([...lastly, input]);
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
@@ -66,10 +69,10 @@ const SearchContainer = () => {
   };
   const onChange = (e: React.FormEvent<HTMLInputElement>) => {
     const targetValue = e.currentTarget.value;
-    setInput(targetValue);
-    setFocus(false);
     const { keyword } = data;
     const matchList: string[] = [];
+    setInput(targetValue);
+    setFocus(false);
     keyword.forEach((item: any) => {
       if (item.slice(0, targetValue.length) === targetValue) {
         matchList.push(item);
@@ -101,6 +104,7 @@ const SearchContainer = () => {
       childRef={searchEl}
       onKeyDown={onKeyDown}
       keyIndex={keyIndex}
+      lastly={lastly}
     />
   );
 };
