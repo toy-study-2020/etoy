@@ -152,6 +152,15 @@ const search = (function() {
     this.wordList[this.wordIndex].classList.add(this.toggleClass);
   };
 
+  Search.prototype.submit = function() {
+    event.preventDefault();
+    if (this.result.querySelector('.' + this.toggleClass)) {
+      console.log(this.result.querySelector('.' + this.toggleClass).innerText);
+      return;
+    }
+
+    console.log(this.input.value);
+  };
 
   return {
     Search
