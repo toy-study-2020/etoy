@@ -16,7 +16,7 @@ function search(keyword) {
     alert(`${keyword} 검색`);
     searchInput.value = '';
     resetResult();
-}
+};
 
 function handleSubmit(e) {
     e.preventDefault()
@@ -48,13 +48,13 @@ function addHiddenClass() {
     if (!recommendKeywordWrap.classList.contains(controlVisibleClass)) {
         recommendKeywordWrap.classList.add(controlVisibleClass);
     }
-}
+};
 
 function removeHiddenClass() {
     if (recommendKeywordWrap.classList.contains(controlVisibleClass)) {
         recommendKeywordWrap.classList.remove(controlVisibleClass);
     }
-}
+};
 
 function appendHTML(keyword, data) {
     keyword.forEach((item, i) => {
@@ -64,7 +64,7 @@ function appendHTML(keyword, data) {
         emphasisingItem(splitItem, data);
         recommendKeywordLi.insertAdjacentHTML('beforeend', `<li><a href="#" class="keyword">${emphasisedItem}</a></li>`);
     });
-}
+};
 
 function loadToKeywords(enteredData) {
     const filteredKeyword = keyword.filter(data => {
