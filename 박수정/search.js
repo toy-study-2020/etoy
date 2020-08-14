@@ -9,7 +9,7 @@ let emphasisedItem = '';
 
 function resetResult() {
     recommendKeywordLi.innerHTML = '';
-    addHiddenClass();
+    expendResult(false);
 };
 
 function search(keyword) {
@@ -44,6 +44,10 @@ function emphasisingItem(arr, emphasisString) {
     });
 };
 
+function checkAccessibilityExpended(boolean) {
+    searchInput.setAttribute('aria-expanded', boolean);
+};
+
 function addHiddenClass() {
     if (!recommendKeywordWrap.classList.contains(controlVisibleClass)) {
         recommendKeywordWrap.classList.add(controlVisibleClass);
@@ -55,6 +59,17 @@ function removeHiddenClass() {
         recommendKeywordWrap.classList.remove(controlVisibleClass);
     }
 };
+
+function expendResult(bool) {
+    checkAccessibilityExpended(bool);
+
+    if (bool) {
+        removeHiddenClass();
+        return;
+    }
+
+    addHiddenClass();
+}
 
 function appendHTML(keyword, data) {
     keyword.forEach((item, i) => {
@@ -76,7 +91,7 @@ function loadToKeywords(enteredData) {
         return;
     }
 
-    removeHiddenClass();
+    expendResult(true);
     appendHTML(filteredKeyword, enteredData);
 };
 
