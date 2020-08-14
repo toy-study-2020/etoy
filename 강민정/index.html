@@ -11,25 +11,27 @@
     <div class="headerTop">
       <div class="loginStatus">
         <a href="#" class="logoAuction">AUCTION</a>
-        <ul>
+        <ul class="loginList">
           <li><a href="#">로그인</a></li>
           <li><a href="#">회원가입</a></li>
           <li><a href="#">이용안내</a></li>
         </ul>
       </div>
     </div>
-    <div class="searchWrapper">
-      <a href="#" class="logoEbay">ebay쇼핑</a>
-      <div class="searchForm">
-        <form method="get" action="">
-          <label for="inputSearch">
-            <input type="search" id="inputSearch" placeholder="검색어를 입력하세요.">
-          </label>
-          <button type="submit" class="buttonSearch">검색</button>
-          <div class="searchListWrap">
-            <ul></ul>
-          </div>
-        </form>
+    <div class="search">
+      <div class="searchWrapper">
+        <a href="#" class="logoEbay">ebay쇼핑</a>
+        <div class="searchForm">
+          <form method="get" action="">
+            <label for="inputSearch">
+              <input type="search" id="inputSearch" placeholder="검색어를 입력하세요.">
+            </label>
+            <button type="submit" class="buttonSearch">검색</button>
+            <div class="searchListWrap">
+              <ul class="searchList"></ul>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </header>
@@ -44,6 +46,28 @@
       <li>7</li>
     </ul>
   </div>
+  <script>
+    ;(function () {
+      'use strict';
+
+      const domReady = () => {
+        const searchForm = new search.Search({
+          wrapper: '.searchForm',
+          input: '#inputSearch',
+          buttonSubmit: '.buttonSearch',
+          resultWrap: '.searchListWrap',
+          result: '.searchList',
+          data: keyword
+        });
+      };
+
+      if (document.readyState === 'complete') {
+        domReady();
+      } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', domReady);
+      }
+    })();
+  </script>
 <script src="./keyword.js"></script>
 <script src="./search.js"></script>
 </body>
