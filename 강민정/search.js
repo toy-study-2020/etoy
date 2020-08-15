@@ -10,7 +10,8 @@ const search = (function() {
       input: 'input[type="search"]',
       buttonSubmit: 'button[type="submit"]',
       resultWrap: null,
-      result: null
+      result: null,
+      FIRST_INDEX: 0
     }
 
     this.wrapper = document.querySelector(args.wrapper ? args.wrapper : args);
@@ -28,7 +29,7 @@ const search = (function() {
     this.isOpened = false;
     this.keyword = null;
     this.wordList = null;
-    this.wordFirstIndex = 0;
+    this.FIRST_INDEX = defaults.FIRST_INDEX;
     this.toggleClass = 'active';
 
     this.shuffle(this.data);
@@ -104,7 +105,7 @@ const search = (function() {
   };
 
   Search.prototype.resultInit = function() {
-    this.wordIndex = this.wordFirstIndex;
+    this.wordIndex = this.FIRST_INDEX;
     this.listArray = [];
     this.result.innerHTML = '';
   };
@@ -127,7 +128,7 @@ const search = (function() {
     this.wordList = this.result.querySelectorAll('li');
     this.wordLength = this.wordList.length;
     this.wordLastIndex = this.wordLength - 1;
-    if (this.wordLength === this.wordFirstIndex) {
+    if (this.wordLength === this.FIRST_INDEX) {
       return;
     }
     this.moveWord(key === 40 ? 'down' : 'up');
@@ -135,8 +136,7 @@ const search = (function() {
 
   Search.prototype.moveWord = function(direction) {
     if (!this.result.querySelector('.' + this.toggleClass)) {
-      this.wordList[this.wordFirstIndex].classList.add(this.toggleClass);
-      return;
+      return this.wordList[this.FIRST_INDEX].classList.add(this.toggleClass);
     }
 
     for (let i = 0; i < this.wordLength; i++) {
@@ -144,9 +144,9 @@ const search = (function() {
     }
 
     if (direction === 'down') {
-      this.wordIndex = this.wordIndex === this.wordLastIndex ? this.wordFirstIndex : ++this.wordIndex;
+      this.wordIndex = this.wordIndex === this.wordLastIndex ? this.FIRST_INDEX : ++this.wordIndex;
     } else {
-      this.wordIndex = this.wordIndex === this.wordFirstIndex ? this.wordLastIndex : --this.wordIndex;
+      this.wordIndex = this.wordIndex === this.FIRST_INDEX ? this.wordLastIndex : --this.wordIndex;
     }
 
     this.wordList[this.wordIndex].classList.add(this.toggleClass);
