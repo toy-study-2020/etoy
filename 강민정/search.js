@@ -53,7 +53,7 @@ const search = (function() {
       this.target = window.event.target;
       while (this.target !== undefined && this.target.parentNode) {
         if (this.target === this.wrapper) {
-          return false;
+          return;
         }
         this.target = this.target.parentNode;
       }
