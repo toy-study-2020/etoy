@@ -86,7 +86,7 @@ const search = (function() {
   Search.prototype.close = function() {
     this.isOpened = false;
     this.resultWrap.classList.remove(this.toggleClass);
-    window.addEventListener('click', this.handlerSearch);
+    window.removeEventListener('click', this.handlerSearch);
   };
 
   Search.prototype.createElement = function(el) {
