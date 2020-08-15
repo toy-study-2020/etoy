@@ -13,8 +13,7 @@ import {
   TabNavItem,
   TabContent,
 } from './SearchStyles';
-
-const INPUT_PLACEHOLDER = '영어로 검색하세요.';
+import { INPUT } from '../../constants/SearchText';
 
 interface IProps {
   onSubmit: any;
@@ -93,7 +92,7 @@ const SearchPresenter: React.SFC<IProps> = ({
             onChange={onChange}
             onClick={onFocus}
             onKeyDown={onKeyDown}
-            placeholder={INPUT_PLACEHOLDER}
+            placeholder={INPUT.PLACEHOLDER}
             value={value}
           />
           <Button>
