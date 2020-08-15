@@ -31,7 +31,7 @@ const SearchContainer = () => {
         setFocus(false);
         setInputFocus(false);
       }
-    });
+    }); // eslint-disable-next-line
   }, [inputFocus]);
 
   const getKeyword = async () => {
