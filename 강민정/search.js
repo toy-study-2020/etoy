@@ -66,22 +66,18 @@ const search = (function() {
     this.keyword = this.input.value.toLowerCase();
 
     if (this.keyword === '') {
-      this.close();
-      return;
+      return this.close();
     }
 
-
     if (event.keyCode === 40 || event.keyCode === 38) {
-      this.selectResult(event.keyCode);
-      return;
+      return this.selectResult(event.keyCode);
     }
 
     this.resultWrap.classList.add(this.toggleClass);
     this.recommend();
 
-    if (this.result.querySelectorAll('li').length === this.wordFirstIndex) {
-      this.close();
-      return;
+    if (this.result.querySelectorAll('li').length === this.FIRST_INDEX) {
+      return this.close();
     }
 
     window.addEventListener('click', this.handlerSearch.bind(this));
@@ -155,8 +151,7 @@ const search = (function() {
   Search.prototype.submit = function() {
     event.preventDefault();
     if (this.result.querySelector('.' + this.toggleClass)) {
-      console.log(this.result.querySelector('.' + this.toggleClass).innerText);
-      return;
+      return console.log(this.result.querySelector('.' + this.toggleClass).innerText);
     }
 
     console.log(this.input.value);
