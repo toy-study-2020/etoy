@@ -56,6 +56,8 @@ const SearchContainer = () => {
     // const getLocalStorage: any = localStorage.getItem('lastly') ? localStorage.getItem('lastly') : '';
     // localStorage.setItem('lastly', JSON.stringify([...JSON.parse(getLocalStorage), input]));
     setLastly([...lastly, input]);
+    setFocus(false);
+    setInputFocus(false);
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
