@@ -1,0 +1,21 @@
+#wrap{overflow:hidden;width:100%;height:100vh;padding:50px 0;text-align:center}
+#wrap *{font-size:16px}
+#wrap button{cursor:pointer}
+.inner{width:100%;padding:30px;background-color:#e7e7e7}
+
+#search{position:relative}
+#search.has_value .relate{display:block}
+.input{display:block;width:100%;height:100%}
+.input input{display:block;width:100%;height:100%;padding:15px;border:1px solid #222}
+.input input:focus{border-color:#1D4CD8}
+.relate{display:none;position:absolute;width:100%;background-color:#fff;border:1px solid #ddd}
+.relate .close{background-color:#e7e7e7;padding:10px 15px;text-align:right}
+.relate .close button{text-decoration:underline}
+.relate .related_list a,
+.relate .related_list button{display:block;width:100%;height:100%;padding:10px 15px;text-align:left;color:#222;background-color:transparent}
+.relate .related_list a:focus,
+.relate .related_list a:hover,
+.relate .related_list button:focus,
+.relate .related_list button:hover,
+.relate .related_list a.focused,
+.relate .related_list button.focused{color:#1D4CD8;background-color:rgba(175, 192, 245, 0.3);outline:none}
