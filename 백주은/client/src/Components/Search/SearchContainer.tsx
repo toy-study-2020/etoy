@@ -52,8 +52,9 @@ const SearchContainer = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const getLocalStorage: any = localStorage.getItem('lastly') ? localStorage.getItem('lastly') : '';
-    localStorage.setItem('lastly', JSON.stringify([...JSON.parse(getLocalStorage), input]));
+
+    // const getLocalStorage: any = localStorage.getItem('lastly') ? localStorage.getItem('lastly') : '';
+    // localStorage.setItem('lastly', JSON.stringify([...JSON.parse(getLocalStorage), input]));
     setLastly([...lastly, input]);
   };
 
