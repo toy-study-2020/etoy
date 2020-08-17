@@ -84,8 +84,8 @@ Searchform.prototype = {
             return
         };
 
-        let searchWord = e.target.value,
-            wordLength = e.target.value.length;
+        const searchWord = e.target.value,
+              wordLength = e.target.value.length;
 
         this.match = this.data.filter(data => 
             searchWord === data.substr(0, wordLength)
@@ -125,7 +125,7 @@ Searchform.prototype = {
 
     keyCodeEvt: function(e) {
         if (!this.isResult) return;
-        let keyCode = e.keyCode;
+        const keyCode = e.keyCode;
 
         switch (keyCode) {
             case 40 : 
@@ -164,4 +164,4 @@ Searchform.prototype = {
     }
 }
 
-let search = new Searchform('.search_area');
+const search = new Searchform('.search_area');
