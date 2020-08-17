@@ -41,6 +41,7 @@ Searchform.prototype = {
         this.showCount = 10;
         this.itemLength = 0;
         this.pointer = 0;
+        this.lstFirstIdx = 1;
     },
 
     eventBind: function() {
@@ -128,13 +129,13 @@ Searchform.prototype = {
 
         switch (keyCode) {
             case 40 : 
-                if (this.pointer > this.itemLength - 1) this.pointer = 0;
+                if (this.pointer > this.itemLength - this.lstFirstIdx) this.pointer = 0;
                 this.pointer++;
                 this.movePointer();
                 break;
 
             case 38 :
-                if (this.pointer <= 1) this.pointer = this.itemLength + 1;
+                if (this.pointer <= this.lstFirstIdx) this.pointer = this.itemLength + this.lstFirstIdx;
                 this.pointer--;
                 this.movePointer();
                 break;
@@ -149,7 +150,7 @@ Searchform.prototype = {
     },
 
     movePointer: function(e) {
-        let target = e ? e.target : this.resultItem[this.pointer - 1].querySelector('a');
+        let target = e ? e.target : this.resultItem[this.pointer - this.lstFirstIdx].querySelector('a');
         
         target.focus();
         this.searchText.value = target.innerHTML.replace(/<(\/em|em)([^>]*)>/gi, '');
