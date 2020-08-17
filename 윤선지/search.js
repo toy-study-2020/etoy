@@ -32,8 +32,8 @@ Searchform.prototype = {
         this.resultList = this.resultBx.querySelector(this.obj.resultList);
         this.keywordbx = this.el.querySelector(this.obj.keywordbx);
         this.closeBtn = this.el.querySelector(this.obj.closeBtn);
-        this.resultItem = "";
-        this.match = [];
+        this.resultItem = null;
+        this.match = null;
         
         this.hiddenClass = this.obj.hiddenClass;
         this.itemClass = this.obj.itemClass;
