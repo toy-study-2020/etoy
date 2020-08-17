@@ -79,10 +79,7 @@ Searchform.prototype = {
     changeEvt: function(e) {
         this.displayList(e);
 
-        if (e.which === 13) {
-            this.valuePrint();
-            return
-        };
+        if (e.which === 13) return this.valuePrint();
 
         const searchWord = e.target.value,
               wordLength = e.target.value.length;
@@ -91,14 +88,10 @@ Searchform.prototype = {
             searchWord === data.substr(0, wordLength)
         );
 
-        if (this.match.length === 0) {
-            this.emptyList(searchWord);
-            return;
-        } 
-        if (e.target.value == '') {
-            this.displayList(e);
-            return;
-        } 
+        if (this.match.length === 0) return this.emptyList(searchWord);
+      
+        if (e.target.value == '') return this.displayList(e);
+        
         this.createList(wordLength);
     },
 
