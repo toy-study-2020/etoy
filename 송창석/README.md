@@ -1,4 +1,4 @@
-# Carousel-js
+# etoy
 
 # 생성방법
 ``` javascript
