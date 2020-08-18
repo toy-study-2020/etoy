@@ -12,10 +12,16 @@ class JsonToHTML {
     }
 
     UserComponent(users, mainCategory) {
+        console.log(users)
         const isHaveTitle = users[mainCategory].title;
         const title = isHaveTitle ? `<h1>${users[mainCategory].title}</h1>`: '';
         const itemArr = isHaveTitle ? users[mainCategory].items : users[mainCategory];
-        const resultList = itemArr.map(obj => `<li>${obj.name}</li>`).join("")
+        const resultList = itemArr.map(obj => {
+            const img = obj.imgSrc ? `<div class="thumb__container"><img src="${obj.imgSrc}" alt=""></div>` : '';
+            const url = obj.url ? `${obj.url}` : '#';
+            return `<li><a href="${url}">${img}<p>${obj.name}</p></a></li>`
+        }).join("")
+
 
         return `${title}<ul>${resultList}</ul>`
     }

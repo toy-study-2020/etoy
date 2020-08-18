@@ -107,3 +107,39 @@ nav .sideMenu ul {
   display: -ms-flexbox;
   display: flex;
 }
+
+h1 {
+  padding: 35px 0 5px;
+  font-size: 24px;
+}
+
+section > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+section > ul img {
+  width: 100%;
+  height: 100%;
+}
+
+section .mainStore li {
+  text-align: center;
+}
+
+section .mainStore .thumb__container {
+  display: block;
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+section .mainBest {
+  background-color: #f7f6f5;
+}
+
+section .mainBest li {
+  width: 32.5%;
+}
