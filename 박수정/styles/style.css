@@ -94,3 +94,16 @@ header .logo--ebay {
   border: none;
   background-color: transparent;
 }
+
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+nav .mainMenu ul,
+nav .sideMenu ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
