@@ -1,10 +1,26 @@
 ### 작업순서
+
+#### 검색 자동 완성
+
 1. 마크업
 2. CSS   
    2-2. 애니메이션
 3. Javascript
 
+---
+#### 메인 컨텐츠
+1. 마크업
+2. CSS
+3. API 통신   
+3-1. GNB   
+3-2. Store   
+3-3. hot deal products   
+3-4. event list   
+3-5. chance products
+
 ### Javascript Step
+
+#### 검색 자동 완성
 1. 변수 값 초기화
 2. 검색창 열기 (keyup, focus)   
 2-2. 검색어 !== null   
@@ -16,6 +32,12 @@
 4-2. 키보드   
 4-3. 개수제한(안하려고했는데 키보드 이벤트 시 시점 이동 이슈..)
 5. 검색 console 노출
+6. keyword 클릭 시 submit 이벤트 추가
+7. refactoring
+
+##### 메인 컨텐츠
+1. API 통신
+....
 
 #### 별도 추가 기능
 - data shuffle(구글링)
