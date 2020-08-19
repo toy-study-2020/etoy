@@ -174,7 +174,7 @@ const search = (function() {
       }
       this.result.insertAdjacentElement(direction, el);
     }
-  }
+  };
 
   return {
     Search
