@@ -1,0 +1,14 @@
+.category {
+    &Wrapper {
+        padding: 20px 0;
+    }
+
+    &Best,
+    &Sub {
+        font-size: 0;
+
+        li {
+            display: inline-block;
+        }
+    }
+}

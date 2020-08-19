@@ -36,8 +36,26 @@
 7. refactoring
 
 ##### 메인 컨텐츠
-1. API 통신
+1. API 통신   
+1-2. contentsAPI.js 내 구현-이유 없....
+
 ....
 
 #### 별도 추가 기능
 - data shuffle(구글링)
+
+#### 경로/이름 정리
+##### 폴더경로
+- style 폴더
+  - `*.css`, `*.scss`
+  - 세부적으로 import 시켜서 사용 예정
+- script 폴더
+  - `*.js`
+- image 폴더
+  - `*.jpg`, `*.png`, `*.svg`
+  
+##### 파일명
+- `기능.확장자`
+  - ex. `search.js` = `검색기능.javascript`
+  - ex. `contentAPI.js` = `컨텐츠API.javascript`
+  - ex. `category.scss` = `카테고리영역.scss`
