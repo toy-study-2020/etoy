@@ -123,6 +123,14 @@ nav .inner .sideMenu ul a {
   font-size: 13px;
 }
 
+nav .inner .mainMenu {
+  font-weight: bold;
+}
+
+nav .inner .mainMenu li:not(:first-child) {
+  margin-left: 50px;
+}
+
 nav .inner .sideMenu {
   border-left: 1px solid #eee;
 }
