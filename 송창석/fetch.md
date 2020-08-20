@@ -1,11 +1,14 @@
 # etoy content rendering
+
 **set.js: 공통**
+<br>
     1. setUrl, toJson, fetchJson 실행
     2. setElement = selector 내부의 엘레먼트들 객체로 리턴(gnb는 별도, gnbElement)
     3. setComponent dataMenu = 객체내부 item배열, list에 reduce로 callback으로 받은 랜더링할 태그들 넣어줌, list 리턴
     4. renderHtml로 타겟엘레멘트에 list 인자값으로 넘겨서 랜더링
 
 **xxxxComponent.js : 각각 JSON별 js**
+<br>
     1. const xxxx = setElement로 엘레먼트값 받음
     2. const xxxxUrl = setUrl로 JSON url설정
     3. fetchJson으로 data값 리턴받음
