@@ -56,11 +56,17 @@ const jsonOpt={
                                         <dt>${obj.name}</dt>
                                         <dd>${obj.description}</dd>
                                     </dl>
-                                    <div class="info--price">
-                                        <p class="price--original>
-                                            <span class="blind>정상가</span>${obj.originalPrice}
-                                        </p>
-                                        <p class="price--sale>
+                                    <div class="info--price">` +
+                                        (function() {
+                                            if (obj.originalPrice !== obj.salePrice) {
+                                                return `<p class="price--original>
+                                                    <span class="blind>정상가</span>${obj.originalPrice}
+                                                </p>`
+                                            }
+
+                                            return '';
+                                        })() +
+                                        `<p class="price--sale>
                                             <span class="blind>할인가</span>${obj.salePrice}
                                         </p>
                                     </div>
@@ -79,19 +85,8 @@ const jsonOpt={
                                     <img src="${obj.imgSrc}" alt="${obj.alt}">
                                 </div>
                                 <div class="info__container">
-                                    <div class="info--price">
-                                        <p class="price--original>
-                                            <span class="blind>정상가</span>${obj.originalPrice}
-                                        </p>
-                                        <p class="price--sale>
-                                            <span class="blind>할인가</span>${obj.salePrice}
-                                        </p>
-                                    </div>
                                     <p>${obj.name}</p>
                                     <span>${obj.description}</span>
-                                    <ul>
-                                        <li>${obj.badge}<li>
-                                    </ul>
                                 </div>
                             </a>
                         </li>`
@@ -108,7 +103,11 @@ const jsonOpt={
                                 </div>
                                 <div class="info__container">
                                     <p>${obj.name}</p>
-                                    <span>${obj.description}</span>
+                                    <ul>` + 
+                                        obj.badge.reduce((acc, cur) => {
+                                            return acc += `<li>${cur}</li>`;
+                                        }, '') +
+                                    `</ul>
                                 </div>
                             </a>
                         </li>`
