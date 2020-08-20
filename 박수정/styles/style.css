@@ -124,7 +124,7 @@ nav .inner .sideMenu ul a {
 }
 
 nav .inner .sideMenu {
-  border-left: 1px solid #ccc;
+  border-left: 1px solid #eee;
 }
 
 nav .inner .sideMenu li {
@@ -141,7 +141,7 @@ h1 {
 }
 
 section .content .inner {
-  padding: 35px 0;
+  padding: 35px 0 20px;
 }
 
 section .content .inner > ul {
@@ -286,6 +286,11 @@ section .mainEvent .info__container span {
   font-size: 12px;
 }
 
+section .mainProducts ul {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
 section .mainProducts .info__container {
   padding: 15px 10px;
 }
@@ -317,14 +322,15 @@ section .mainBest .inner > ul > li,
 section .mainEvent .inner > ul > li,
 section .mainProducts .inner > ul > li {
   width: 32.6%;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-section .mainBest .inner > ul > li:not(:first-child),
-section .mainEvent .inner > ul > li:not(:first-child),
-section .mainProducts .inner > ul > li:not(:first-child) {
+section .mainBest .inner > ul > li:not(:nth-child(3n + 1)),
+section .mainEvent .inner > ul > li:not(:nth-child(3n + 1)),
+section .mainProducts .inner > ul > li:not(:nth-child(3n + 1)) {
   margin-left: 1.1%;
 }
 
