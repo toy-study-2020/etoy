@@ -46,7 +46,7 @@ const jsonOpt={
                             <a href="#">
                                 <div class="thumb__container">
                                     <img src="${obj.imgSrc}" alt="${obj.alt}">
-                                    <div class="label>
+                                    <div class="label">
                                         <p class="label--discountRate">${obj.labels.typeDiscountRate}</p>
                                         <p class="label--discountFee">${obj.labels.typeDiscountFee}</p>
                                     </div>
@@ -59,15 +59,15 @@ const jsonOpt={
                                     <div class="info--price">` +
                                         (function() {
                                             if (obj.originalPrice !== obj.salePrice) {
-                                                return `<p class="price--original>
-                                                    <span class="blind>정상가</span>${obj.originalPrice}
+                                                return `<p class="price--original">
+                                                    <span class="blind">정상가</span>$${obj.originalPrice}
                                                 </p>`
                                             }
 
                                             return '';
                                         })() +
-                                        `<p class="price--sale>
-                                            <span class="blind>할인가</span>${obj.salePrice}
+                                        `<p class="price--sale">
+                                            <span class="blind">할인가</span>$${obj.salePrice}
                                         </p>
                                     </div>
                                 </div>
@@ -103,7 +103,7 @@ const jsonOpt={
                                 </div>
                                 <div class="info__container">
                                     <p>${obj.name}</p>
-                                    <ul>` + 
+                                    <ul class="tag">` + 
                                         obj.badge.reduce((acc, cur) => {
                                             return acc += `<li>${cur}</li>`;
                                         }, '') +
@@ -118,7 +118,7 @@ const jsonOpt={
 
 const mainMenu=new JsonToHTML('.mainMenu', jsonOpt.gnb.mainMenu);
 const sideMenu=new JsonToHTML('.sideMenu', jsonOpt.gnb.sideMenu);
-const mainStore=new JsonToHTML('.mainStore', jsonOpt.section.mainStore);
-const mainBest=new JsonToHTML('.mainBest', jsonOpt.section.mainBest);
-const mainEvent=new JsonToHTML('.mainEvent', jsonOpt.section.mainEvent);
-const mainProducts=new JsonToHTML('.mainProducts', jsonOpt.section.mainProducts);
+const mainStore=new JsonToHTML('.mainStore .inner', jsonOpt.section.mainStore);
+const mainBest=new JsonToHTML('.mainBest .inner', jsonOpt.section.mainBest);
+const mainEvent=new JsonToHTML('.mainEvent .inner', jsonOpt.section.mainEvent);
+const mainProducts=new JsonToHTML('.mainProducts .inner', jsonOpt.section.mainProducts);
