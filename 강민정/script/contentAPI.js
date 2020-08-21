@@ -18,6 +18,7 @@
     this.name = args.name ? args.name : defaults.name;
     this.subName = args.subName ? args.subName : defaults.subName;
     this.wrapper = document.querySelector(args.wrapper ? args.wrapper : defaults.wrapper);
+    this.loading = document.querySelector('.loadingWrap');
     this.dataObject = {};
     this.DOMArray = [];
     this.innerDOM = null;
@@ -111,6 +112,9 @@
     },
     writeDOM: function() {
       this.wrapper.innerHTML = this.innerDOM.join('');
+      setTimeout(function() {
+        this.loading.parentNode.removeChild(this.loading);
+      }.bind(this), 1000);
     }
   };
 

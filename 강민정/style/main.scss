@@ -11,6 +11,7 @@ $fontStrong: 18px;
 $fontTitle: 20px;
 $normalWeight: normal;
 $boldWeight: bold;
+@import './mixin';
 
 body {
     margin: 0;
@@ -30,7 +31,19 @@ body {
     }
 }
 
-@import './mixin';
+.loadingWrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .1);
+
+    &:after {
+        @include loading;
+    }
+}
+
 @import './header';
 @import './search';
 @import './_category';
