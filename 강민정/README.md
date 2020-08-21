@@ -1,13 +1,10 @@
 ### 작업순서
-
 #### 검색 자동 완성
-
 1. 마크업
 2. CSS   
    2-2. 애니메이션
 3. Javascript
 
----
 #### 메인 컨텐츠
 1. 마크업
 2. CSS
@@ -18,8 +15,10 @@
 3-4. event list   
 3-5. chance products
 
+##### 별도 추가 기능
+- data shuffle(구글링)
+---
 ### Javascript Step
-
 #### 검색 자동 완성
 1. 변수 값 초기화
 2. 검색창 열기 (keyup, focus)   
@@ -35,15 +34,12 @@
 6. keyword 클릭 시 submit 이벤트 추가
 7. refactoring
 
-##### 메인 컨텐츠
+#### 메인 컨텐츠
 1. API 통신   
-1-2. contentsAPI.js 내 구현-이유 없....
+1-2. contentAPI.js 내 구현-이유 없....
 
-....
-
-#### 별도 추가 기능
-- data shuffle(구글링)
-
+- fetch 통해서 object 내에 data 넣는데 고생함..
+---
 #### 경로/이름 정리
 ##### 폴더경로
 - style 폴더
@@ -59,3 +55,4 @@
   - ex. `search.js` = `검색기능.javascript`
   - ex. `contentAPI.js` = `컨텐츠API.javascript`
   - ex. `category.scss` = `카테고리영역.scss`
+  

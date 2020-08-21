@@ -1,14 +1,55 @@
 .category {
     &Wrapper {
-        padding: 20px 0;
+        border-bottom: 1px solid $borderColor;
+    }
+
+    &List {
+        position: relative;
+        width: 1000px;
+        margin: 0 auto;
     }
 
     &Best,
     &Sub {
+        padding: 20px 0 18px;
         font-size: 0;
 
         li {
             display: inline-block;
+            position: relative;
+            margin-left: 20px;
+            vertical-align: top;
+
+            &:first-child {
+                margin-left: 0;
+            }
         }
+
+        a {
+            display: inline-block;
+            color: #333;
+        }
+
+        strong {
+            font-weight: $normalWeight;
+            font-size: 16px;
+        }
+    }
+
+    &Sub {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: -30px;
+            width: 1px;
+            height: 15px;
+            background-color: $borderColor;
+        }
+
     }
 }

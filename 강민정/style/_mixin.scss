@@ -1,0 +1,59 @@
+.button {
+    &Search {
+        width: 80px;
+        height: 40px;
+        border: none;
+        border-radius: 0;
+        box-sizing: border-box;
+        background-color: $point;
+        color: #fff;
+        vertical-align: top;
+        font-size: 14px;
+    }
+}
+
+@mixin title {
+    display: block;
+    width: $maxWidth;
+    margin: 0 auto ;
+    padding-top: 20px;
+    text-align: left;
+    font-size: $fontTitle;
+}
+
+@mixin prdName {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: $fontDefault;
+    color: #333;
+    font-weight: $boldWeight;
+}
+
+@keyframes search-on {
+    0% {
+        opacity: 0;
+        max-height: 0;
+    }
+
+    80% {
+        opacity: 1;
+        max-height: 400px;
+    }
+
+    100% {
+        opacity: 1;
+        max-height: 400px;
+    }
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.2);
+    }
+}
