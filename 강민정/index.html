@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>eToy</title>
   <link rel="stylesheet" href="./style/main.css">
+  <link rel="stylesheet" href="./style/carousel.css">
 </head>
 <body>
   <header>
@@ -78,6 +78,8 @@
           result: '.searchList',
           data: keyword
         });
+
+        const carousel = new carouselPrototype.Carousel('.carouselSlide');
       };
 
       if (document.readyState === 'complete') {
@@ -89,6 +91,7 @@
   </script>
 <script src="./script/keyword.js"></script>
 <script src="./script/search.js"></script>
+<script src="./script/carousel.js"></script>
 <script src="./script/contentAPI.js"></script>
 </body>
 </html>
