@@ -2,7 +2,7 @@ class JsonToHTML {
     constructor(container, option) {
         this.container = container;
         this.fileName = option.fileName;
-        this.mainCategory = option.mainCategory;
+        this.category = option.category;
         this.markup = option.markup;
 
         this.init();
@@ -12,10 +12,10 @@ class JsonToHTML {
         return res.json();
     }
 
-    UserComponent(users, mainCategory, markup) {
-        const isHaveTitle = users[mainCategory].title;
-        const title = isHaveTitle ? `<h1>${users[mainCategory].title}</h1>`: '';
-        const itemArr = isHaveTitle ? users[mainCategory].items : users[mainCategory];
+    UserComponent(users, category, markup) {
+        const isHaveTitle = users[category].title;
+        const title = isHaveTitle ? `<h1>${users[category].title}</h1>`: '';
+        const itemArr = isHaveTitle ? users[category].items : users[category];
         const resultList = itemArr.reduce((acc, cur) => {
             return acc += markup(cur);
         }, '');
@@ -30,7 +30,7 @@ class JsonToHTML {
     init() {
         fetch(`https://baekcode.github.io/APIs/${this.fileName}.json`)
             .then(this.toJson)
-            .then(res => this.UserComponent(res, this.mainCategory, this.markup))
+            .then(res => this.UserComponent(res, this.category, this.markup))
             .then(componentHtml => this.renderHtml(componentHtml, this.container))
     }
 }

@@ -2,7 +2,7 @@ const jsonOpt={
     gnb: {
         mainMenu: {
             fileName: 'menu',
-            mainCategory: 'mainMenu',
+            category: 'mainMenu',
             markup: function(obj) {
                 return `<li>
                             <a href="${obj.url}">
@@ -13,7 +13,7 @@ const jsonOpt={
         },
         sideMenu: {
             fileName: 'menu',
-            mainCategory: 'sideMenu',
+            category: 'sideMenu',
             markup: function (obj) {
                 return `<li>
                             <a href="${obj.url}">
@@ -26,7 +26,7 @@ const jsonOpt={
     section: {
         mainStore: {
             fileName: 'mainStore',
-            mainCategory: 'mainStore',
+            category: 'mainStore',
             markup: function (obj) {
                 return `<li>
                             <a href="#">
@@ -40,7 +40,7 @@ const jsonOpt={
         },
         mainBest: {
             fileName: 'mainBest',
-            mainCategory: 'mainBest',
+            category: 'mainBest',
             markup: function (obj) {
                 return `<li>
                             <a href="#">
@@ -77,7 +77,7 @@ const jsonOpt={
         },
         mainEvent: {
             fileName: 'mainEvent',
-            mainCategory: 'mainEvent',
+            category: 'mainEvent',
             markup: function (obj) {
                     return `<li>
                             <a href="#">
@@ -94,7 +94,7 @@ const jsonOpt={
         },
         mainProducts: {
             fileName: 'mainProducts',
-            mainCategory: 'mainProducts',
+            category: 'mainProducts',
             markup: function (obj) {
                 return `<li>
                             <a href="#">
