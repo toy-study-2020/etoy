@@ -1,0 +1,398 @@
+//reset
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol,
+dl {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+body {
+    font-family:'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #000;
+}
+
+//variables
+$black: #000;
+$white: #fff;
+$silver: #ddd;
+
+$min-width: 1250px;
+
+$boldWeight: 600;
+$normalWeight: 400;
+
+//mixin
+@mixin clearfix {
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+
+@mixin ellipse {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@function sz($number) {
+    @return $number + px;
+}
+
+@import 'libs/slider';
+
+.inner_layout {
+    width: $min-width;
+    margin: 0 auto;
+}
+
+.area_title {
+    font-size: sz(24);
+    padding-top: sz(35);
+    padding-bottom: sz(25);
+    font-weight: $normalWeight;
+}
+
+//header
+.header_area .inner_layout {
+    @include clearfix;
+
+    .lst_nav {
+        @include clearfix;
+
+        li {
+            float: left;
+            margin-left: sz(55);
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+        
+        a {
+            display: block;
+            height: sz(54);
+            font-size: sz(15);
+            line-height: sz(54);
+        }
+    }
+
+    .main_nav {
+        float: left;
+        height: sz(54);
+    }
+    
+    .service_nav {
+        float: right;
+        height: sz(54);
+    }
+}
+
+.brand_area {
+    text-align: center;
+    padding-bottom: sz(35);
+
+    .area_title {
+        padding-bottom: sz(5);
+        text-align: left;
+    }
+
+    .lst_brand {
+        display: inline-block;
+        font-size: 0;
+
+        li {
+            margin: 0 sz(10);
+            display: inline-block;
+        }
+    }
+
+    .thumb_img {
+        overflow: hidden;
+        width: sz(120);
+        height: sz(120);
+        border-radius: 50%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .name {
+        padding-top: sz(15);
+        font-size: sz(14);
+        font-weight: $boldWeight;
+    }
+}
+
+.best_hotdeal_area {
+    padding-bottom: sz(35);
+    background: hsl(30, 11%, 96%);
+
+    .lst_best {
+        @include clearfix;
+        margin: 0 sz(-20);
+
+        li {
+            float: left;
+            width: (100 / 3) + %;
+            padding: 0 sz(20);
+            box-sizing: border-box;
+        }
+    }
+
+    .item_best {
+        position: relative;
+        border: 1px solid $silver;
+        background: $white;
+    }
+
+    .prd_flag {
+        position: absolute;
+        top: 0;
+        left: sz(-1);
+        width: sz(64);
+        border: 1px solid $silver;
+
+        .flag {
+            width: 100%;
+            height: sz(64);
+            padding-top: sz(15);
+            box-sizing: border-box;
+            background: $white;
+            text-align: center;
+            font-size: sz(12);
+            font-weight: $boldWeight;
+        }
+
+        .percent {
+            color: $white;
+            background: red;
+            
+            .num {
+                font-size: sz(20);
+            }
+        }
+    }
+
+    .prd_thumb {
+        overflow: hidden;
+        width: 100%;
+        height: sz(236);
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .prd_info {
+        padding: sz(15) sz(10);
+
+        .simple_tit {
+            @include ellipse;
+            margin-bottom: sz(8);
+            font-size: sz(14);
+            font-weight: $boldWeight;
+        }
+
+        .price {
+            @include clearfix;
+            margin-top: sz(16);
+
+            .original {
+                float: left;
+                position: relative;
+                line-height: sz(24);
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    width: 100%;
+                    height: sz(1);
+                    background: $black;
+                }
+
+                &:only-child {
+                    float: right;
+                    margin-top: sz(-2);
+                    font-size: 24px;
+                    line-height: 1;
+                    color: #ff2234;
+
+                    &:before {
+                        display: none;
+                    }
+                }
+            }
+
+            .sale {
+                float: right;
+                margin-top: sz(-2);
+                font-size: 24px;
+                line-height: 1;
+                color: #ff2234;
+            }
+        }
+    }
+}
+
+.exhibition_area {
+    .lst_exhi {
+        @include clearfix;
+        margin: 0 sz(-20);
+
+        li {
+            float: left;
+            width: (100 / 3) + %;
+            padding: 0 sz(20);
+            box-sizing: border-box;
+        }
+
+        .item_exhi {
+            background: $white;
+            border: 1px solid $silver;
+        }
+
+        .thumb_img {
+            overflow: hidden;
+            height: sz(200);
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .item_info {
+            height: sz(92);
+            padding: sz(15) sz(10);
+            box-sizing: border-box;
+
+            .tit {
+                font-size: sz(15);
+                font-weight: $boldWeight;
+            }
+
+            .subtit {
+                margin-top: sz(8);
+                color: #666;
+            }
+        }
+    }
+}
+
+//chance_area
+.chance_area {
+    .lst_chance {
+        @include clearfix;
+        margin: 0 sz(-20);
+
+        li {
+            float: left;
+            width: (100 / 3) + %;
+            padding: 0 sz(20);
+            margin-top: sz(10);
+            box-sizing: border-box;
+        }
+
+        .item_chance {
+            position: relative;
+            background: $white;
+            border: 1px solid $silver;
+        }
+
+        .thumb_img {
+            overflow: hidden;
+            height: sz(200);
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .item_info {
+            padding: sz(15) sz(10);
+
+            .percent {
+                color: red;
+                font-size: sz(24);
+                line-height: 1;
+            }
+
+            .name {
+                font-size: 15px;
+                font-weight: 600;
+            }
+
+            .price {
+                @include clearfix;
+                margin-top: sz(16);
+    
+                .original {
+                    float: left;
+                    position: relative;
+                    line-height: sz(24);
+    
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        width: 100%;
+                        height: sz(1);
+                        background: $black;
+                    }
+    
+                    &:only-child {
+                        float: right;
+                        margin-top: sz(-2);
+                        font-size: 24px;
+                        line-height: 1;
+                        color: #ff2234;
+    
+                        &:before {
+                            display: none;
+                        }
+                    }
+                }
+    
+                .sale {
+                    float: right;
+                    margin-top: sz(-2);
+                    font-size: 24px;
+                    line-height: 1;
+                    color: #ff2234;
+                }
+            }
+        }
+
+        .itme_badge {
+            position: absolute;
+            top: 0;
+            left: sz(-1);
+            width: sz(64);
+            height: sz(64);
+            border: 1px solid $silver;
+            background: $white;
+            text-align: center;
+            font-size: sz(12);
+            font-weight: $boldWeight;
+            box-sizing: border-box;
+            color: $white;
+            background: red;    
+        }
+    }
+}
