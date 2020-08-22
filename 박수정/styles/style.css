@@ -280,6 +280,10 @@ section .mainBest li .info__container .info--price .price--sale {
   font-weight: bold;
 }
 
+section .mainEvent .inner {
+  overflow: hidden;
+}
+
 section .mainEvent .info__container {
   padding: 15px 10px;
 }
