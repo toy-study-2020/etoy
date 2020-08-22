@@ -11,7 +11,7 @@ $fontStrong: 18px;
 $fontTitle: 20px;
 $normalWeight: normal;
 $boldWeight: bold;
-@import './mixin';
+@import './components/mixin';
 
 body {
     margin: 0;
@@ -42,12 +42,17 @@ body {
     &:after {
         @include loading;
     }
+
+    &.hidden {
+        display: none;
+    }
 }
 
-@import './header';
-@import './search';
-@import './_category';
-@import './_chance';
-@import './_store';
-@import './_hot';
-@import './_event';
+@import './components/header';
+@import './search/search';
+@import './category/_category';
+@import './product/_chance';
+@import './store/_store';
+@import './product/_hot';
+@import './product/_product';
+@import './event/_event';

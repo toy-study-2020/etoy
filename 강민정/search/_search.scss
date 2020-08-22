@@ -44,11 +44,12 @@
         display: none;
         position: absolute;
         overflow-y: auto;
-        width: 780px;
+        width: 770px;
         max-height: 400px;
         background-color: #fff;
         border: solid 1px #eee;
         box-sizing: border-box;
+        z-index: 2;
 
         &.active {
             display: block;

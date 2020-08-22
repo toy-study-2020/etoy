@@ -1,16 +1,17 @@
 .category {
-    &Wrapper {
+    &-wrapper {
         border-bottom: 1px solid $borderColor;
+        text-align: center;
     }
 
-    &List {
+    &-list {
+        display: inline-block;
         position: relative;
-        width: 1000px;
-        margin: 0 auto;
+        vertical-align: top;
     }
 
-    &Best,
-    &Sub {
+    &-best,
+    &-sub {
         padding: 20px 0 18px;
         font-size: 0;
 
@@ -36,10 +37,14 @@
         }
     }
 
-    &Sub {
-        position: absolute;
-        top: 0;
-        right: 0;
+    &-best {
+        width: 825px;
+        text-align: left;
+    }
+
+    &-sub {
+        width: 175px;
+        text-align: right;
 
         &:before {
             content: "";
