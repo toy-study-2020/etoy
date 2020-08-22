@@ -19,12 +19,16 @@ const bestItem = (value, index) => {
     </li>`
 }
 
-const best = setElement("#main_best")
 const bestUrl = setUrl("mainBest")
+const best = {
+    title: setElement("#main_best", ".title"),
+    list: setElement("#main_best", "ul")
+}
 
 fetchJson(bestUrl)
     .then((data) => {
-        renderHtml(best.title, data.mainBest.title)
         const itemGroup = setComponent(data.mainBest, "items", bestItem)
+
+        renderHtml(best.title, data.mainBest.title)
         renderHtml(best.list, itemGroup)
     })

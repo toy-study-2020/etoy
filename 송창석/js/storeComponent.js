@@ -7,12 +7,16 @@ const storeItem = (value, index) => {
     </li>`
 }
 
-const store = setElement("#main_store")
 const storeUrl = setUrl("mainStore")
+const store = {
+    title: setElement("#main_store", ".title"),
+    list: setElement("#main_store", "ul")
+}
 
 fetchJson(storeUrl)
     .then((data) => {
-        renderHtml(store.title, data.mainStore.title)
         const itemGroup = setComponent(data.mainStore, "items", storeItem)
+
+        renderHtml(store.title, data.mainStore.title)
         renderHtml(store.list, itemGroup)
     })

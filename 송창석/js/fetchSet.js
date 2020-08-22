@@ -11,21 +11,11 @@ const fetchJson = (url) => {
         .then(toJson)
 }
 
-const setElement = (selector) => {
+const setElement = (selector, key) => {
     const wrapper = document.querySelector(selector)
+    const target = wrapper.querySelector(key)
 
-    return {
-        title: wrapper.querySelector(".title"),
-        list: wrapper.querySelector("ul")
-    }
-}
-const gnbElement = (selector) => {
-    const gnb = document.querySelector(selector)
-
-    return {
-        main: gnb.querySelector(".main_list"),
-        side: gnb.querySelector(".side_list")
-    }
+    return target
 }
 
 const setComponent = (data, name, cb) => {

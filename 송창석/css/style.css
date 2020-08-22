@@ -150,7 +150,9 @@
 }
 
 .box_list .img_area {
+    overflow: hidden;
     display: block;
+    height: 220px;
 }
 
 .box_list .img_area img {
@@ -158,6 +160,7 @@
 }
 
 .box_list .desc_area {
+    min-height: 100px;
     padding: 15px 10px;
     border-top: 1px solid #ddd;
 }
@@ -209,7 +212,7 @@
     padding-top: 100%;
     position: relative;
     border-radius: 50%;
-    background-color: aqua;
+    background-color: #e7e7e7;
 }
 
 .store_list .circle-img img {

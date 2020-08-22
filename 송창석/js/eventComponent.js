@@ -12,12 +12,17 @@ const eventItem = (value, index) => {
     </li>`
 }
 
-const event = setElement("#main_event")
 const eventUrl = setUrl("mainEvent")
+const event = {
+    title: setElement("#main_event", ".title"),
+    list: setElement("#main_event", "ul"),
+}
+
 
 fetchJson(eventUrl)
     .then((data) => {
-        renderHtml(event.title, data.mainEvent.title)
         const itemGroup = setComponent(data.mainEvent, "items", eventItem)
+
+        renderHtml(event.title, data.mainEvent.title)
         renderHtml(event.list, itemGroup)
     })

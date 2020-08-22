@@ -17,12 +17,16 @@ const chanceItem = (value, index) => {
     </li>`
 }
 
-const chance = setElement("#main_chance")
+const chance = {
+    title: setElement("#main_chance", ".title"),
+    list: setElement("#main_chance", "ul")
+}
 const chanceUrl = setUrl("mainProducts")
 
 fetchJson(chanceUrl)
     .then((data) => {
-        renderHtml(chance.title, data.mainProducts.title)
         const itemGroup = setComponent(data.mainProducts, "items", chanceItem)
+
+        renderHtml(chance.title, data.mainProducts.title)
         renderHtml(chance.list, itemGroup)
     })
