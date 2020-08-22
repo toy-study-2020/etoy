@@ -12,6 +12,9 @@
     this.type = args.type;
     this.class = args.className;
 
+    this.response = null;
+    this.insertDirection = null;
+
     this.dataObject = {};
     this.innerDOM = null;
     this.contentWrapper = document.querySelector('.content');
@@ -20,38 +23,36 @@
     this.wrapper = null;
     this.title = null;
 
-    return this.setAPI();
+    this.setDOM(this.data);
   };
 
   API.prototype = {
-    setAPI: function() {
-      return fetch(`${API_URL}${this.data}.json` , {method: 'GET'})
-        .then(response => response.json())
-        .then(data => this.setDOM(data))
-        .then(this.hiddenElement());
+    getFetch: async function() {
+      this.response = await fetch(`${API_URL}${this.data}.json`);
+      const data = await this.response.json();
+      this.hiddenElement();
+      return data;
     },
-    setDOM: function(data) {
-      this.dataObject = data;
+    setDOM: async function() {
+      this.dataObject = await this.getFetch();
       this[this.type]();
 
       if (this.type !== 'category') {
         this.setWrapper();
         this.setTitle();
       }
+
       this.setList();
-      this.insertEl(this.innerDOM);
+      this.insertEl(this.innerDOM, 'beginend');
     },
     hiddenElement: function() {
       this.loading.classList.add('hidden');
     },
-    insertEl:function(inner) {
-      this.elWrapper.innerHTML = inner;
-      this.wrapper.insertAdjacentElement('beforeend', this.elWrapper);
-    },
     setWrapper: function() {
       this.wrapper = this.createElement('div');
       this.wrapper.setAttribute('class', `${this.type}-wrapper`);
-      this.contentWrapper.insertAdjacentElement('beforeend', this.wrapper);
+      this.insertDirection = this.type === 'category' ? 'afterbegin' : 'beforeend';
+      this.contentWrapper.insertAdjacentElement(this.insertDirection, this.wrapper);
     },
     setList: function() {
       this.elWrapper = this.createElement('ul');
@@ -62,6 +63,10 @@
       this.titleEl = document.createElement('h2');
       this.titleEl.innerHTML = this.title;
       this.wrapper.insertAdjacentElement('beforeend', this.titleEl)
+    },
+    insertEl:function(inner) {
+      this.elWrapper.innerHTML = inner;
+      this.wrapper.insertAdjacentElement('beforeend', this.elWrapper);
     },
     category: function() {
       if (!document.querySelector(`.${this.type}-wrapper`))
@@ -155,43 +160,43 @@
     }
   };
 
-  async function loadAPI() {
-    const category = await new API({
+  const loadAPI = () => {
+    const category = new API({
       data: 'menu',
       name: 'mainMenu',
       type: 'category',
       className: 'best'
     });
 
-    const subCategory = await new API({
+    const subCategory = new API({
       data: 'menu',
       name: 'sideMenu',
       type: 'category',
       className: 'sub'
     });
 
-    const store = await new API({
+    const store = new API({
       data: 'mainStore',
       name: 'mainStore',
       type: 'store',
       className: 'store'
     });
 
-    const hot = await new API({
+    const hot = new API({
       data: 'mainBest',
       name: 'mainBest',
       type: 'hot',
       className: 'hot'
     });
 
-    const event = await new API({
+    const event = new API({
       data: 'mainEvent',
       name: 'mainEvent',
       type: 'event',
       className: 'event'
     });
 
-    const chance = await new API({
+    const chance = new API({
       data: 'mainProducts',
       name: 'mainProducts',
       type: 'chance',
