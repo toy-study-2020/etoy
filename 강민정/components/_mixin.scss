@@ -1,0 +1,83 @@
+.button {
+    &Search {
+        width: 80px;
+        height: 40px;
+        border: none;
+        border-radius: 0;
+        box-sizing: border-box;
+        background-color: $point;
+        color: #fff;
+        vertical-align: top;
+        font-size: 14px;
+    }
+}
+
+@mixin title {
+    display: block;
+    width: $maxWidth;
+    margin: 0 auto ;
+    padding-top: 20px;
+    text-align: left;
+    font-size: $fontTitle;
+}
+
+@mixin prdName {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: $fontDefault;
+    color: #333;
+    font-weight: $boldWeight;
+}
+@mixin loading {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom :0;
+    right: 0;
+    margin: auto;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes search-on {
+    0% {
+        opacity: 0;
+        max-height: 0;
+    }
+
+    80% {
+        opacity: 1;
+        max-height: 400px;
+    }
+
+    100% {
+        opacity: 1;
+        max-height: 400px;
+    }
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.2);
+    }
+}

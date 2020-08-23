@@ -1,0 +1,29 @@
+<div class="inner_layout">
+	<h2 class="area_title">{{mainProducts.title}}</h2>
+	<ul class="lst_chance">
+		{{#each mainProducts.items}}
+		<li id="{{id}}">
+			<a href="">
+				<div class="item_chance">
+					{{#xif "badge != ''"}}
+					<div class="itme_badge">{{badge}}</div>
+					{{/xif}}
+					<div class="thumb_img">
+						<img src="{{imgSrc}}" alt="{{alt}}">
+					</div>
+					<div class="item_info">
+						<div class="name">{{name}}</div>
+						<div class="price">
+							<span class="original">{{priceUnit originalPrice}}</span>
+							{{#xif "originalPrice !== salePrice"}}
+							<span class="sale">{{priceUnit salePrice}}</span>
+							{{/xif}}
+						</div>
+						
+					</div>
+				</div>
+			</a>
+		</li>
+		{{/each}}
+	</ul>
+</div>

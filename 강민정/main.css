@@ -1,204 +1,498 @@
+.buttonSearch {
+  width: 80px;
+  height: 40px;
+  border: none;
+  border-radius: 0;
+  box-sizing: border-box;
+  background-color: #0064d2;
+  color: #fff;
+  vertical-align: top;
+  font-size: 14px; }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+@keyframes search-on {
+  0% {
+    opacity: 0;
+    max-height: 0; }
+  80% {
+    opacity: 1;
+    max-height: 400px; }
+  100% {
+    opacity: 1;
+    max-height: 400px; } }
+
+@keyframes zoom {
+  0% {
+    transform: scale(1); }
+  100% {
+    transform: scale(1.2); } }
+
 body {
   margin: 0;
   padding: 0;
-}
+  min-width: 1000px; }
+  body * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none; }
+  body img {
+    display: block;
+    margin: 0 auto; }
 
-body * {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  text-decoration: none;
-}
-
-body img {
-  display: block;
-  margin: 0 auto;
-}
+.loadingWrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1); }
+  .loadingWrap:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    animation: spin 2s linear infinite; }
+  .loadingWrap.hidden {
+    display: none; }
 
 header {
   position: relative;
-  height: 135px;
-  margin: 0 auto;
-}
-
-header .headerTop {
-  height: 40px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border-bottom: solid 1px #f0eeec;
-}
-
-header .logoAuction {
-  display: inline-block;
-  width: 88px;
-  height: 14px;
-  margin-top: 12px;
-  text-indent: -9999px;
-  background: url("http://static.itrcomm.com/img/common/common-icon.png") no-repeat 0 0;
-}
+  height: 132px;
+  margin: 0 auto; }
+  header .headerTop {
+    height: 40px;
+    box-sizing: border-box; }
+  header .logoAuction {
+    display: inline-block;
+    width: 88px;
+    height: 14px;
+    margin-top: 12px;
+    text-indent: -9999px;
+    background: url("http://static.itrcomm.com/img/common/common-icon.png") no-repeat 0 0; }
 
 .loginStatus {
   position: relative;
   height: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.loginStatus > ul {
-  position: absolute;
-  top: 12px;
-  right: 0;
-  font-size: 0;
-}
-
-.loginStatus li {
-  display: inline-block;
-  position: relative;
-  margin-left: 20px;
-}
-
-.loginStatus li:first-child {
-  margin-left: 0;
-}
-
-.loginStatus li:first-child:after {
-  content: "";
-  position: absolute;
-  right: -10px;
-  top: 0;
-  width: 1px;
-  height: 100%;
-  background-color: #666;
-}
-
-.loginStatus li a {
-  font-size: 12px;
-  color: #666;
-}
+  max-width: 1000px;
+  margin: 0 auto; }
+  .loginStatus > ul {
+    position: absolute;
+    top: 12px;
+    right: 0;
+    font-size: 0; }
+  .loginStatus li {
+    display: inline-block;
+    position: relative;
+    margin-left: 20px; }
+    .loginStatus li:first-child {
+      margin-left: 0; }
+      .loginStatus li:first-child:after {
+        content: "";
+        position: absolute;
+        right: -10px;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background-color: #666; }
+    .loginStatus li a {
+      font-size: 12px;
+      color: #666; }
 
 .search {
   padding: 20px 0;
   border: 1px solid #ddd;
   border-left: none;
   border-right: none;
-  background-color: #f0eeec;
-}
+  background-color: #f0eeec; }
+  .searchWrapper {
+    max-width: 1000px;
+    margin: 0 auto; }
+  .search .logoEbay {
+    display: inline-block;
+    width: 176px;
+    height: 40px;
+    margin-top: 5px;
+    background: url("http://static.itrcomm.com/img/common/common-icon.png") no-repeat 0 -44px;
+    background-size: 146px auto;
+    text-indent: -9999px;
+    vertical-align: top; }
+  .searchForm {
+    display: inline-block;
+    position: relative;
+    margin-left: 40px;
+    padding: 5px 0;
+    font-size: 0;
+    vertical-align: top; }
+  .search input[type="search"] {
+    width: 690px;
+    height: 40px;
+    border-radius: 0;
+    border: 1px solid #0064d2;
+    padding: 5px;
+    box-sizing: border-box;
+    vertical-align: top; }
+  .searchListWrap {
+    display: none;
+    position: absolute;
+    overflow-y: auto;
+    width: 770px;
+    max-height: 400px;
+    background-color: #fff;
+    border: solid 1px #eee;
+    box-sizing: border-box;
+    z-index: 2; }
+    .searchListWrap.active {
+      display: block;
+      animation: search-on .3s ease-in-out;
+      animation-fill-mode: forwards; }
+  .searchList {
+    padding: 10px; }
+    .searchList li {
+      padding: 5px;
+      cursor: pointer; }
+      .searchList li a {
+        font-size: 14px;
+        color: #333; }
+        .searchList li a em {
+          font-style: normal;
+          color: #0064d2;
+          font-weight: bold; }
+      .searchList li:hover {
+        background-color: #eee; }
+      .searchList li.active {
+        background-color: #eee; }
 
-.searchWrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+.category-wrapper {
+  border-bottom: 1px solid #f0eeec;
+  text-align: center; }
 
-.search .logoEbay {
-  display: inline-block;
-  width: 176px;
-  height: 40px;
-  margin-top: 5px;
-  background: url("http://static.itrcomm.com/img/common/common-icon.png") no-repeat 0 -44px;
-  background-size: 146px auto;
-  text-indent: -9999px;
-  vertical-align: top;
-}
-
-.searchForm {
+.category-list {
   display: inline-block;
   position: relative;
-  margin-left: 40px;
-  padding: 5px 0;
-  font-size: 0;
-  vertical-align: top;
-}
+  vertical-align: top; }
 
-.search input[type="search"] {
-  width: 780px;
-  height: 40px;
-  border-radius: 0;
-  border: 1px solid #0064d2;
-  padding: 5px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  vertical-align: top;
-}
+.category-best, .category-sub {
+  padding: 20px 0 18px;
+  font-size: 0; }
+  .category-best li, .category-sub li {
+    display: inline-block;
+    position: relative;
+    margin-left: 20px;
+    vertical-align: top; }
+    .category-best li:first-child, .category-sub li:first-child {
+      margin-left: 0; }
+  .category-best a, .category-sub a {
+    display: inline-block;
+    color: #333; }
+  .category-best strong, .category-sub strong {
+    font-weight: normal;
+    font-size: 16px; }
 
-.searchListWrap {
-  display: none;
-  position: absolute;
-  overflow-y: auto;
-  width: 780px;
-  max-height: 0;
-  max-height: 400px;
-  background-color: #fff;
-  border: solid 1px #eee;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
+.category-best {
+  width: 825px;
+  text-align: left; }
 
-.searchListWrap.active {
+.category-sub {
+  width: 175px;
+  text-align: right; }
+  .category-sub:before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: -30px;
+    width: 1px;
+    height: 15px;
+    background-color: #f0eeec; }
+
+.store-wrapper h2,
+.hot-wrapper h2,
+.event-wrapper h2,
+.chance-wrapper h2 {
   display: block;
-  -webkit-animation: search-on .3s ease-in-out;
-          animation: search-on .3s ease-in-out;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-}
+  width: 1000px;
+  margin: 0 auto;
+  padding-top: 20px;
+  text-align: left;
+  font-size: 20px; }
 
-.searchList {
-  padding: 10px;
-}
+.store-list,
+.hot-list,
+.event-list,
+.chance-list {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 10px 0 20px;
+  font-size: 0; }
+  .store-list li,
+  .hot-list li,
+  .event-list li,
+  .chance-list li {
+    display: inline-block;
+    width: 33.33333%;
+    vertical-align: top;
+    padding: 0 5px;
+    margin-top: 10px;
+    box-sizing: border-box; }
+    .store-list li a,
+    .hot-list li a,
+    .event-list li a,
+    .chance-list li a {
+      display: block;
+      position: relative;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      background-color: #fff; }
+  .store-list .imgWrap,
+  .hot-list .imgWrap,
+  .event-list .imgWrap,
+  .chance-list .imgWrap {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 170px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ccc; }
+    .store-list .imgWrap img,
+    .hot-list .imgWrap img,
+    .event-list .imgWrap img,
+    .chance-list .imgWrap img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 100%;
+      transform-origin: center; }
+      .store-list .imgWrap img:hover,
+      .hot-list .imgWrap img:hover,
+      .event-list .imgWrap img:hover,
+      .chance-list .imgWrap img:hover {
+        animation: zoom .2s ease-in-out;
+        animation-fill-mode: forwards; }
+  .store-list strong,
+  .hot-list strong,
+  .event-list strong,
+  .chance-list strong {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    padding: 10px; }
+  .store-list .prdDescription,
+  .hot-list .prdDescription,
+  .event-list .prdDescription,
+  .chance-list .prdDescription {
+    display: -webkit-box;
+    overflow: hidden;
+    max-height: 36px;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    padding: 0 10px 10px;
+    font-size: 14px;
+    color: #333;
+    word-break: break-all; }
+  .store-list .prdBadge,
+  .hot-list .prdBadge,
+  .event-list .prdBadge,
+  .chance-list .prdBadge {
+    display: block;
+    padding: 10px 10px 0;
+    height: 32px;
+    box-sizing: border-box; }
+    .store-list .prdBadge > span,
+    .hot-list .prdBadge > span,
+    .event-list .prdBadge > span,
+    .chance-list .prdBadge > span {
+      display: inline-block;
+      padding: 2px 5px 0;
+      border: 1px solid #0064d2;
+      color: #0064d2;
+      border-radius: 5px;
+      font-size: 14px; }
+      .store-list .prdBadge > span + span,
+      .hot-list .prdBadge > span + span,
+      .event-list .prdBadge > span + span,
+      .chance-list .prdBadge > span + span {
+        margin-left: 5px; }
+  .store-list .prdPrice,
+  .hot-list .prdPrice,
+  .event-list .prdPrice,
+  .chance-list .prdPrice {
+    display: block;
+    font-size: 0;
+    padding: 10px; }
+    .store-list .prdPrice > span,
+    .hot-list .prdPrice > span,
+    .event-list .prdPrice > span,
+    .chance-list .prdPrice > span {
+      display: inline-block;
+      vertical-align: top; }
+    .store-list .prdPrice em,
+    .hot-list .prdPrice em,
+    .event-list .prdPrice em,
+    .chance-list .prdPrice em {
+      font-style: normal;
+      vertical-align: middle; }
+    .store-list .prdPrice .prdOrigin,
+    .hot-list .prdPrice .prdOrigin,
+    .event-list .prdPrice .prdOrigin,
+    .chance-list .prdPrice .prdOrigin {
+      width: 50%;
+      text-decoration: line-through;
+      color: #777;
+      font-size: 14px; }
+      .store-list .prdPrice .prdOrigin + em,
+      .hot-list .prdPrice .prdOrigin + em,
+      .event-list .prdPrice .prdOrigin + em,
+      .chance-list .prdPrice .prdOrigin + em {
+        text-decoration: line-through;
+        color: #777;
+        font-size: 14px; }
+      .store-list .prdPrice .prdOrigin + .prdDiscount,
+      .hot-list .prdPrice .prdOrigin + .prdDiscount,
+      .event-list .prdPrice .prdOrigin + .prdDiscount,
+      .chance-list .prdPrice .prdOrigin + .prdDiscount {
+        width: 50%; }
+    .store-list .prdPrice .prdDiscount,
+    .hot-list .prdPrice .prdDiscount,
+    .event-list .prdPrice .prdDiscount,
+    .chance-list .prdPrice .prdDiscount {
+      width: 100%;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: right;
+      color: #0064d2; }
+      .store-list .prdPrice .prdDiscount + em,
+      .hot-list .prdPrice .prdDiscount + em,
+      .event-list .prdPrice .prdDiscount + em,
+      .chance-list .prdPrice .prdDiscount + em {
+        font-size: 20px;
+        font-weight: bold;
+        color: #0064d2; }
+  .store-list .prdPercent,
+  .hot-list .prdPercent,
+  .event-list .prdPercent,
+  .chance-list .prdPercent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 70px;
+    z-index: 1; }
+  .store-list .prdRate,
+  .store-list .prdFee,
+  .hot-list .prdRate,
+  .hot-list .prdFee,
+  .event-list .prdRate,
+  .event-list .prdFee,
+  .chance-list .prdRate,
+  .chance-list .prdFee {
+    display: inline-block;
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    color: #fff;
+    box-sizing: border-box;
+    padding: 5px; }
+  .store-list .prdRate,
+  .hot-list .prdRate,
+  .event-list .prdRate,
+  .chance-list .prdRate {
+    font-size: 18px;
+    background-color: #0064d2;
+    line-height: 66px; }
+  .store-list .prdFee,
+  .hot-list .prdFee,
+  .event-list .prdFee,
+  .chance-list .prdFee {
+    padding-top: 18px;
+    font-size: 14px;
+    background-color: #00afd1; }
 
-.searchList li {
-  padding: 5px;
-  font-size: 14px;
-  color: #333;
-  cursor: pointer;
-}
+.store-store,
+.hot-store,
+.event-store,
+.chance-store {
+  background-color: #fff; }
+  .store-store li,
+  .hot-store li,
+  .event-store li,
+  .chance-store li {
+    width: 110px;
+    margin-left: 17px;
+    padding: 0; }
+    .store-store li:first-child,
+    .hot-store li:first-child,
+    .event-store li:first-child,
+    .chance-store li:first-child {
+      margin-left: 0; }
+    .store-store li .imgWrap,
+    .hot-store li .imgWrap,
+    .event-store li .imgWrap,
+    .chance-store li .imgWrap {
+      display: inline-block;
+      overflow: hidden;
+      position: relative;
+      width: 110px;
+      height: 110px;
+      background-color: #f0eeec;
+      vertical-align: top;
+      border-radius: 60px; }
+    .store-store li img,
+    .hot-store li img,
+    .event-store li img,
+    .chance-store li img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+    .store-store li a,
+    .hot-store li a,
+    .event-store li a,
+    .chance-store li a {
+      border: none; }
+    .store-store li strong,
+    .hot-store li strong,
+    .event-store li strong,
+    .chance-store li strong {
+      margin-top: 20px;
+      padding: 0;
+      text-align: center;
+      color: #333;
+      font-size: 16px;
+      font-weight: normal; }
 
-.searchList li:hover {
-  background-color: #eee;
-}
+.store-event li .imgWrap,
+.hot-event li .imgWrap,
+.event-event li .imgWrap,
+.chance-event li .imgWrap {
+  height: 194px; }
 
-.searchList li.active {
-  background-color: #eee;
-}
-
-.buttonSearch {
-  width: 80px;
-  height: 40px;
-  border: none;
-  border-radius: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  background-color: #0064d2;
-  color: #fff;
-  vertical-align: top;
-  font-size: 14px;
-}
-
-@-webkit-keyframes search-on {
-  0% {
-    opacity: 0;
-    max-height: 0;
-  }
-  80% {
-    opacity: 1;
-    max-height: 400px;
-  }
-  100% {
-    opacity: 1;
-    max-height: 400px;
-  }
-}
-
-@keyframes search-on {
-  0% {
-    opacity: 0;
-    max-height: 0;
-  }
-  80% {
-    opacity: 1;
-    max-height: 400px;
-  }
-  100% {
-    opacity: 1;
-    max-height: 400px;
-  }
-}
+.store-chance li .imgWrap,
+.hot-chance li .imgWrap,
+.event-chance li .imgWrap,
+.chance-chance li .imgWrap {
+  height: 165px; }

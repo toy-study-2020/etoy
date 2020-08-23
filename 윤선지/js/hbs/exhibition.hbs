@@ -1,0 +1,68 @@
+<div class="inner_layout">
+	<h2 class="area_title">{{mainEvent.title}}</h2>
+	<!-- slide -->
+	<div class="slider_wrap slider_exhibition">
+		<div class="slide_frame">
+			<div class="slide_list">
+				{{#each mainEvent.items}}
+					{{#xif "id % 3 == 1"}}
+						<div class="slide_bx">
+							<ul class="lst_exhi">
+								<li id="{{id}}">
+									<a href="#">
+										<div class="item_exhi">
+											<div class="thumb_img">
+												<img src="{{imgSrc}}" alt="{{alt}}">
+											</div>    
+											<div class="item_info">
+												<div class="tit">{{name}}</div>
+												<div class="subtit">
+													{{description}}
+												</div>
+											</div>
+										</div>
+									</a>
+								</li>
+					{{/xif}}
+					{{#xif "id % 3 == 2"}}
+								<li id="{{id}}">
+									<a href="#">
+										<div class="item_exhi">
+											<div class="thumb_img">
+												<img src="{{imgSrc}}" alt="{{alt}}">
+											</div>    
+											<div class="item_info">
+												<div class="tit">{{name}}</div>
+												<div class="subtit">
+													{{description}}
+												</div>
+											</div>
+										</div>
+									</a>
+								</li>
+					{{/xif}}
+					{{#xif "id % 3 == 0"}}
+								<li id="{{id}}">
+									<a href="#">
+										<div class="item_exhi">
+											<div class="thumb_img">
+												<img src="{{imgSrc}}" alt="{{alt}}">
+											</div>    
+											<div class="item_info">
+												<div class="tit">{{name}}</div>
+												<div class="subtit">
+													{{description}}
+												</div>
+											</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					{{/xif}}
+				{{/each}}
+			</div>
+		</div>
+	</div>
+	<!-- //slide -->
+</div>

@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Document</title>
+  <title>eToy</title>
   <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href="./carousel/carousel.css">
 </head>
 <body>
   <header>
@@ -25,10 +25,10 @@
           <form method="get" action="">
             <label for="inputSearch">
               <input
-                      type="search"
-                      id="inputSearch"
-                      placeholder="검색어를 입력하세요."
-                      autocomplete="off"
+                type="search"
+                id="inputSearch"
+                placeholder="검색어를 입력하세요."
+                autocomplete="off"
               >
             </label>
             <button type="submit" class="buttonSearch">검색</button>
@@ -40,17 +40,17 @@
       </div>
     </div>
   </header>
-  <div class="carouselSlide">
-    <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-      <li>4</li>
-      <li>5</li>
-      <li>6</li>
-      <li>7</li>
-    </ul>
+  <div class="content">
+    <div class="carouselSlide">
+      <ul>
+        <li><img src="https://placeimg.com/600/300/nature"></li>
+        <li><img src="https://placeimg.com/900/300/animals"></li>
+        <li><img src="https://placeimg.com/500/300/people"></li>
+      </ul>
+    </div>
+
   </div>
+  <div class="loadingWrap"></div>
   <script>
     ;(function () {
       'use strict';
@@ -64,6 +64,8 @@
           result: '.searchList',
           data: keyword
         });
+
+        const carousel = new carouselPrototype.Carousel('.carouselSlide');
       };
 
       if (document.readyState === 'complete') {
@@ -73,7 +75,9 @@
       }
     })();
   </script>
-<script src="./keyword.js"></script>
-<script src="./search.js"></script>
+<script src="./components/keyword.js"></script>
+<script src="./search/search.js"></script>
+<script src="./carousel/carousel.js"></script>
+<script src="./components/contentAPI.js"></script>
 </body>
 </html>

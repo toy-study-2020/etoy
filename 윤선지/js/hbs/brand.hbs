@@ -1,0 +1,15 @@
+<div class="inner_layout">
+	<h2 class="area_title">{{mainStore.title}}</h2>
+	<ul class="lst_brand">
+		{{#each mainStore.items}}
+		<li id="{{id}}">
+			<a href="#">
+				<div class="thumb_img">
+					<img src="{{regUrl imgSrc}}" alt="">
+				</div>
+				<div class="name">{{imgAlt}}</div>
+			</a>
+		</li>
+		{{/each}}
+	</ul>
+</div>

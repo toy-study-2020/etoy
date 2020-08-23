@@ -1,6 +1,22 @@
+$maxWidth: 1000px;
+$borderColor: #f0eeec;
+$borderDarker: #ddd;
+$borderDarker: #ccc;
+$borderPoint: #777;
+$point: #0064d2;
+$point2: #00afd1;
+$hover: #eee;
+$fontDefault: 14px;
+$fontStrong: 18px;
+$fontTitle: 20px;
+$normalWeight: normal;
+$boldWeight: bold;
+@import './components/mixin';
+
 body {
     margin: 0;
     padding: 0;
+    min-width: $maxWidth;
 
     * {
         margin: 0;
@@ -15,180 +31,24 @@ body {
     }
 }
 
-header {
-    position: relative;
-    height: 135px;
-    margin: 0 auto;
+.loadingWrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .1);
 
-    .headerTop {
-        height: 40px;
-        box-sizing: border-box;
-        border-bottom: solid 1px #f0eeec;
+    &:after {
+        @include loading;
     }
 
-    .logoAuction {
-        display: inline-block;
-        width: 88px;
-        height: 14px;
-        margin-top: 12px;
-        text-indent: -9999px;
-        background: url("http://static.itrcomm.com/img/common/common-icon.png") no-repeat 0 0;
-    }
-}
-
-.login {
-    &Status {
-        position: relative;
-        height: 40px;
-        max-width: 1200px;
-        margin: 0 auto;
-
-        > ul {
-            position: absolute;
-            top: 12px;
-            right: 0;
-            font-size: 0;
-        }
-
-        li {
-            display: inline-block;
-            position: relative;
-            margin-left: 20px;
-
-            &:first-child {
-                margin-left: 0;
-
-                &:after {
-                    content: "";
-                    position: absolute;
-                    right: -10px;
-                    top: 0;
-                    width: 1px;
-                    height: 100%;
-                    background-color: #666;
-                }
-            }
-
-            &:before {
-
-            }
-
-            a {
-                font-size: 12px;
-                color: #666;
-            }
-        }
-    }
-}
-
-.search {
-    padding: 20px 0;
-    border: 1px solid #ddd;
-    border-left: none;
-    border-right: none;
-    background-color: #f0eeec;
-
-    &Wrapper {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .logoEbay {
-        display: inline-block;
-        width: 176px;
-        height: 40px;
-        margin-top: 5px;
-        background: url("http://static.itrcomm.com/img/common/common-icon.png") no-repeat 0 -44px;
-        background-size: 146px auto;
-        text-indent: -9999px;
-        vertical-align: top;
-    }
-
-    &Form {
-        display: inline-block;
-        position: relative;
-        margin-left: 40px;
-        padding: 5px 0;
-        font-size: 0;
-        vertical-align: top;
-    }
-
-    input[type="search"] {
-        width: 780px;
-        height: 40px;
-        border-radius: 0;
-        border: 1px solid #0064d2;
-        padding: 5px;
-        box-sizing: border-box;
-        vertical-align: top;
-    }
-
-    &ListWrap {
+    &.hidden {
         display: none;
-        position: absolute;
-        overflow-y: auto;
-        width: 780px;
-        max-height: 0;
-        max-height: 400px;
-        background-color: #fff;
-        border: solid 1px #eee;
-        box-sizing: border-box;
-
-        &.active {
-            display: block;
-            animation: search-on .3s ease-in-out;
-            animation-fill-mode: forwards;
-        }
-    }
-
-    &List {
-        padding: 10px;
-
-        li {
-            padding: 5px;
-            font-size: 14px;
-            color: #333;
-            cursor: pointer;
-
-            &:hover {
-                background-color: #eee;
-            }
-
-            &.active {
-                background-color: #eee;
-            }
-        }
     }
 }
 
-.button {
-    &Search {
-        width: 80px;
-        height: 40px;
-        border: none;
-        border-radius: 0;
-        box-sizing: border-box;
-        background-color: #0064d2;
-        color: #fff;
-        vertical-align: top;
-        font-size: 14px;
-    }
-}
-
-@keyframes search-on {
-    0% {
-        opacity: 0;
-        max-height: 0;
-    }
-
-
-    80% {
-        opacity: 1;
-        max-height: 400px;
-    }
-
-    100% {
-        opacity: 1;
-        max-height: 400px;
-    }
-}
+@import './components/header';
+@import './search/search';
+@import './category/_category';
+@import './product/_product';

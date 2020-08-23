@@ -1,0 +1,30 @@
+<div class="inner_layout">
+	<h2 class="area_title">{{mainBest.title}}</h2>
+	<ul class="lst_best">
+		{{#each mainBest.items}}
+		<li id="{{id}}">
+			<a href="#">
+				<div class="item_best">
+					<div class="prd_flag">
+						<div class="flag percent"><span class="num">{{regNum labels.typeDiscountRate}}</span>%</div>
+						<div class="flag detail">{{labels.typeDiscountFee}}</div>
+					</div>
+					<div class="prd_thumb">
+						<img src="{{imgSrc}}" alt="{{alt}}">
+					</div>
+					<div class="prd_info">
+						<div class="simple_tit">{{name}}</div>
+						<div class="tit">{{description}}</div>
+						<div class="price">
+							<span class="original">{{priceUnit originalPrice}}</span>
+							{{#xif "originalPrice !== salePrice"}}
+							<span class="sale">{{priceUnit salePrice}}</span>
+							{{/xif}}
+						</div>
+					</div>
+				</div>
+			</a>
+		</li>
+		{{/each}}
+	</ul>
+</div>

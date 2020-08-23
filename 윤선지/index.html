@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Search Form</title>
-    <link rel="stylesheet" href="./search.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script type="text/javascript" src="js/libs/handlebars-helper-x.js"></script>
+    <script src="js/libs/slider.js"></script>
   </head>
   <body>
     <div class="search_area">
@@ -37,8 +41,15 @@
         <button type="button" class="btn_close">닫기</button>
       </div>
     </div>
+    <header class="header_area"></header>
+    <section class="brand_area"></section>
+    <section class="best_hotdeal_area"></section>
+    <section class="exhibition_area"></section>
+    <section class="chance_area"></section>
+    
     <!-- 고정 : script body 내부에서 선언 (별도의 script 추가 가능)  -->
-    <script src="./keyword.js"></script>
-    <script src="./search.js"></script>
+    <script src="js/keyword.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/loadData.js"></script>
   </body>
 </html>
