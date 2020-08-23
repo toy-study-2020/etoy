@@ -1,0 +1,241 @@
+.store,
+.hot,
+.event,
+.chance {
+    &-wrapper {
+        h2 {
+            @include title;
+        }
+    }
+
+    &-list {
+        width: 1000px;
+        margin: 0 auto;
+        padding: 10px 0 20px;
+        font-size: 0;
+
+        li {
+            display: inline-block;
+            width: (100/3)#{"%"};
+            vertical-align: top;
+            padding: 0 5px;
+            margin-top: 10px;
+            box-sizing: border-box;
+
+            a {
+                display: block;
+                position: relative;
+                border: 1px solid $borderDarker;
+                box-sizing: border-box;
+                background-color: #fff;
+            }
+        }
+
+        .imgWrap {
+            display: block;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: 170px;
+            box-sizing: border-box;
+            border-bottom: 1px solid $borderDarker;
+
+            img {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                margin: auto;
+                width: auto;
+                max-width: 100%;
+                height: auto;
+                max-height: 100%;
+                transform-origin: center;
+
+                &:hover {
+                    animation: zoom .2s ease-in-out;
+                    animation-fill-mode: forwards;
+                }
+            }
+        }
+
+        strong {
+            @include prdName;
+            padding: 10px;
+        }
+
+        .prdDescription {
+            display: -webkit-box;
+            overflow: hidden;
+            max-height: 36px;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            padding: 0 10px 10px;
+            font-size: $fontDefault;
+            color: #333;
+            word-break: break-all;
+        }
+
+        .prdBadge {
+            display: block;
+            padding: 10px 10px 0;
+            height: 32px;
+            box-sizing: border-box;
+
+            > span {
+                display: inline-block;
+                padding: 2px 5px 0;
+                border: 1px solid $point;
+                color: $point;
+                border-radius: 5px;
+                font-size: $fontDefault;
+
+                & + span {
+                    margin-left: 5px;
+                }
+            }
+        }
+
+        .prdPrice {
+            display: block;
+            font-size: 0;
+            padding: 10px;
+
+            > span {
+                display: inline-block;
+                vertical-align: top;
+            }
+
+            em {
+                font-style: normal;
+                vertical-align: middle;
+            }
+
+            .prdOrigin {
+                width: 50%;
+                text-decoration: line-through;
+                color: $borderPoint;
+                font-size: $fontDefault;
+
+                & + em {
+                    text-decoration: line-through;
+                    color: $borderPoint;
+                    font-size: $fontDefault;
+                }
+
+                & + .prdDiscount {
+                    width: 50%;
+                }
+            }
+
+            .prdDiscount {
+                width: 100%;
+                font-size: $fontTitle;
+                font-weight: $boldWeight;
+                text-align: right;
+                color: $point;
+
+                & + em {
+                    font-size: $fontTitle;
+                    font-weight: $boldWeight;
+                    color: $point;
+                }
+            }
+        }
+
+        .prdPercent {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 70px;
+            z-index: 1;
+        }
+
+        .prdRate,
+        .prdFee {
+            display: inline-block;
+            width: 100%;
+            height: 70px;
+            text-align: center;
+            color: #fff;
+            box-sizing: border-box;
+            padding: 5px;
+        }
+
+        .prdRate {
+            font-size: $fontStrong;
+            background-color: $point;
+            line-height: 66px;
+        }
+
+        .prdFee {
+            padding-top: 18px;
+            font-size: $fontDefault;
+            background-color: $point2;
+        }
+    }
+
+    &-store {
+        background-color: #fff;
+
+        li {
+            width: 110px;
+            margin-left: 17px;
+            padding: 0;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            .imgWrap {
+                display: inline-block;
+                overflow: hidden;
+                position: relative;
+                width: 110px;
+                height: 110px;
+                background-color: $borderColor;
+                vertical-align: top;
+                border-radius: 60px;
+            }
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            a {
+                border: none;
+            }
+
+            strong {
+                margin-top: 20px;
+                padding: 0;
+                text-align: center;
+                color: #333;
+                font-size: 16px;
+                font-weight: $normalWeight;
+            }
+        }
+    }
+
+    &-event {
+        li {
+            .imgWrap {
+                height: 194px;
+            }
+        }
+    }
+
+    &-chance {
+        li {
+            .imgWrap {
+                height: 165px;
+            }
+        }
+    }
+}

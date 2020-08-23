@@ -1,0 +1,88 @@
+.search {
+    padding: 20px 0;
+    border: 1px solid #ddd;
+    border-left: none;
+    border-right: none;
+    background-color: $borderColor;
+
+    &Wrapper {
+        max-width: $maxWidth;
+        margin: 0 auto;
+    }
+
+    .logoEbay {
+        display: inline-block;
+        width: 176px;
+        height: 40px;
+        margin-top: 5px;
+        background: url("http://static.itrcomm.com/img/common/common-icon.png") no-repeat 0 -44px;
+        background-size: 146px auto;
+        text-indent: -9999px;
+        vertical-align: top;
+    }
+
+    &Form {
+        display: inline-block;
+        position: relative;
+        margin-left: 40px;
+        padding: 5px 0;
+        font-size: 0;
+        vertical-align: top;
+    }
+
+    input[type="search"] {
+        width: 690px;
+        height: 40px;
+        border-radius: 0;
+        border: 1px solid $point;
+        padding: 5px;
+        box-sizing: border-box;
+        vertical-align: top;
+    }
+
+    &ListWrap {
+        display: none;
+        position: absolute;
+        overflow-y: auto;
+        width: 770px;
+        max-height: 400px;
+        background-color: #fff;
+        border: solid 1px #eee;
+        box-sizing: border-box;
+        z-index: 2;
+
+        &.active {
+            display: block;
+            animation: search-on .3s ease-in-out;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    &List {
+        padding: 10px;
+
+        li {
+            padding: 5px;
+            cursor: pointer;
+
+            a {
+                font-size: $fontDefault;
+                color: #333;
+
+                em {
+                    font-style: normal;
+                    color: $point;
+                    font-weight: $boldWeight;
+                }
+            }
+
+            &:hover {
+                background-color: $hover;
+            }
+
+            &.active {
+                background-color: $hover;
+            }
+        }
+    }
+}
