@@ -1,28 +1,9 @@
-const container = document.querySelector('.input__container');
-const listWrap = container.querySelector('ul');
-const input = container.querySelector('input');
+import { input } from "./setElement.js";
+import { initializationInput } from "./initializationInput.js";
+import { removeList, addList } from "./manageList.js";
 
 function keycheck(evt) {
     return evt.which ? evt.which : event.keyCode;
-}
-
-function initializationInput() {
-    input.value = '';
-    input.focus();
-}
-
-function removeList(evt) {
-    if (!listWrap.lastElementChild) return;
-
-    let selector = evt.target.tagName === 'INPUT'
-     ? listWrap.lastElementChild : evt.target.parentElement;
-
-    selector.remove();
-}
-
-function addList(val) {
-    initializationInput();
-    listWrap.insertAdjacentHTML('beforeend', `<li>${val}<button type="button" class="deleteBtn">✖</button></li>`)
 }
 
 input.addEventListener('keyup', function(e) {
@@ -30,7 +11,7 @@ input.addEventListener('keyup', function(e) {
 
     switch (keycheck(e)) {
         case 188:
-            if (!value) return initializationInput();
+            if (!value) return initializationInput(input);
 
             addList(value);
             break;
