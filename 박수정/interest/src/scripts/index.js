@@ -1,4 +1,3 @@
-const root = document.querySelector('#app');
 const container = document.querySelector('.input__container');
 const listWrap = container.querySelector('ul');
 const input = container.querySelector('input');
