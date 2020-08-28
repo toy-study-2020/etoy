@@ -13,11 +13,12 @@ function initializationInput() {
 }
 
 function removeList(evt) {
-    let selector = evt.target.parentElement;
+    if (!listWrap.lastElementChild) return;
 
-    if (evt.target.tagName === 'INPUT') {
-        listWrap.lastElementChild.remove();
-    }
+    let selector = evt.target.tagName === 'INPUT'
+     ? listWrap.lastElementChild : evt.target.parentElement;
+
+    selector.remove();
 }
 
 function addList(val) {
