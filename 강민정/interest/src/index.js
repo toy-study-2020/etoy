@@ -64,7 +64,7 @@ class Interest {
     }
 
     if (this.input.value === '' && event.keyCode === 8) {
-      this.removeTag()
+      this.removeTag();
     }
   };
 
@@ -89,20 +89,25 @@ class Interest {
   }
 
   removeTag() {
-    if (event.type !== 'click' && event.type !== 'keyup') return;
     if (this.tagKey + this.lastIndex < 0) return;
+    if (!this.input.previousElementSibling) return;
 
     this.tagTarget = event.target;
-
     this.dataKey =
       event.type === 'click'
         ? `${this.tagTarget.getAttribute('data-target')}`
-        : `tagKey-${this.tagKey + this.lastIndex}`;
+        : `${this.input.previousElementSibling.getAttribute('data-key')}`;
 
     this.list.removeChild(this.list.querySelector(`span[data-key="${this.dataKey}"]`));
-    this.tagList.pop();
-    this.setArrayLength();
+    this.removeArray(event.type);
     this.input.focus();
+  }
+
+  removeArray(type) {
+    if (type === 'click') this.tagList.splice(this.dataKey.replace('tagKey-', ''), 1);
+    else this.tagList.pop();
+
+    this.setArrayLength();
   }
 
   setArray(text) {
