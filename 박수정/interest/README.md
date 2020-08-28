@@ -2,7 +2,7 @@
 
 ## 구현화면
 
-![90979332-607b5180-e58f-11ea-8775-89fccbc4ddfa](C:\Users\수정\Desktop\90979332-607b5180-e58f-11ea-8775-89fccbc4ddfa.gif)
+![90979332-607b5180-e58f-11ea-8775-89fccbc4ddfa](https://user-images.githubusercontent.com/44539224/90979332-607b5180-e58f-11ea-8775-89fccbc4ddfa.gif)
 
 <br>
 
