@@ -35,6 +35,7 @@
 .list_interest {
     overflow: hidden;
 }
+
 .item_interest {
     display: inline-block;
     vertical-align: middle;
@@ -80,33 +81,13 @@
     transform: rotate(-45deg);
 }
 
-.write_wrap {
+.write_interest {
     overflow: hidden;
-    position: relative;
-    margin-bottom: 3px;
-}
-
-.write_wrap > * {
-    overflow: hidden;
-    display: inline-block;
     width: auto;
+    height: auto;
     padding: 5px;
     font-weight: bold;
     font-size: 14px;
     min-width: 30px;
-}
-
-.write_calc {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    opacity: 0;
-}
-
-.write_interest {
-    border: 1px solid red;
-    width: 100%;
-    position: relative;
-    z-index: 1;
+    border: 1px solid #000;
 }

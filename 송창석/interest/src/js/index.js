@@ -1,47 +1,32 @@
-import { eraseHtml, renderHtml } from "./utils.js";
-import { defaultComponent, interestComponent, interestItems, calcWirteSize } from "./interestComponent.js";
+import { SET_ELEMENT } from "./constant.js";
+import { connectTag, renderTag } from "./utils.js";
+import { baseTemplate, itemComponent, addItems, eraseItems } from "./interestComponent.js";
 
 const root = document.querySelector('#app');
 
 const render = () => {
-    const defaultRender = defaultComponent();
-    renderHtml(root, defaultRender, "beforeend");
+    const baseRender = baseTemplate();
+    renderTag(root, baseRender);
 
-    const element = {
-        interest: document.querySelector(".interest"),
-        writewrap: document.querySelector(".write_wrap"),
-        writecalc: document.querySelector(".write_calc"),
-        writearea: document.querySelector(".write_interest"),
-    };
+    const element = SET_ELEMENT(root);
+    setEvent(element);
+}
 
-    element.writearea.addEventListener("keydown", (event) => {
-        calcWirteSize(event, element);
+const setEvent = (element) => {
+    const { write, list, items } = element;
+    write.addEventListener("keyup", (e) => {
+        setItems(list, items , e, addItems);
     });
-
-    element.writearea.addEventListener("keyup", (event) => {
-        calcWirteSize(event, element);
-        
-        const writeObj = interestItems(event, element);
-        if(writeObj != undefined) {
-            const isValue = writeObj.value != "" ? true : false;
-            const isCode = writeObj.code != 188 ? true: false;
-            const interestRender = interestComponent(writeObj.value.substr(0, writeObj.value.length - 1));
-            
-            if(isValue && !isCode) renderHtml(element.writewrap, interestRender, "beforebegin");
-            if(!isValue && isCode) eraseHtml(writeObj.eraseTarget, element.interest);
-        }
-    });
-
-    element.interest.addEventListener("click", (event) => {
-        if(event.target.classList.contains("item_erase")) {
-            const eraseTarget = event.target.parentNode;
-            element.writearea.focus();
-            eraseHtml(eraseTarget, element.interest);
-        }
+    list.addEventListener("click", (e) => {
+        setItems(list, items , e, eraseItems);
     })
 }
 
-
+const setItems = (list, items, e, func) => {
+    const itemArr = func(e, items);
+    const setTag = connectTag(itemArr, itemComponent);
+    if(setTag != undefined) renderTag(list, setTag);
+}
 
 render();
 

@@ -1,42 +1,47 @@
-import CLASS_NAME from "./constant.js";
+import { CLASS_NAME, PLACE_HOLDER } from "./constant.js";
 
-const defaultComponent = () => {
-    return `<div class="${CLASS_NAME.wrap}">
-        <h2 class="${CLASS_NAME.title}">관심사</h2>
-        <div class="${CLASS_NAME.interest}">
-            <div class="${CLASS_NAME.writeWrap}">
-                <span class="${CLASS_NAME.writeCalc}"></span>
-                <textarea id="toWrite" class="${CLASS_NAME.writearea}" tabindex="1" rows="1"></textarea>
-            </div>
+const baseTemplate = () => {
+    const { WRAP, TITLE, INTEREST, LIST, WRITE } = CLASS_NAME;
+    
+    return `<div class="${WRAP}">
+        <h2 class="${TITLE}">관심사</h2>
+        <div class="${INTEREST}">
+            <uL class="${LIST}"></uL>
+            <input type="text" class="${WRITE}" placeholder="${PLACE_HOLDER}"/>
         </div>
     </div>`
 }
 
-const interestComponent = (value) => {
-    return `<div class="${CLASS_NAME.item}">${value}<button type="button" class="${CLASS_NAME.erase}"></button></div>`
+const itemComponent = (value, index) => {
+    const { ITEM, ERASE } = CLASS_NAME;
+
+    return `<li class="${ITEM}" data-idx="${index}">${value}<button type="button" class="${ERASE}"></button></li>`
 }
 
-const interestItems = (e, element) => {
+const addItems = (e, items) => {
     const code = e.keyCode;
     const value = e.target.value;
-    const itemArr = element.interest.querySelectorAll(".item_interest");
-    let eraseTarget = null;
     
-    if(code === 188) e.target.value = "";
-    if(code === 46) eraseTarget = itemArr[0];
-    if(code === 8) eraseTarget = itemArr[itemArr.length - 1];
-    if (code === 188 || code === 46 || code === 8) {
-        return {
-            value,
-            eraseTarget,
-            code
-        }
+    if(code === 188) {
+        if(value != ",") items.push(value.substr(0, value.length - 1));
+        e.target.value = "";
+    } 
+    if(code === 46 || code === 8) {
+        if(value === "") items.pop();
+    }
+    if(code === 188 || code === 46 || code === 8) return items;
+}
+
+const eraseItems = (e, items) => {
+    const target = e.target;
+    
+    if(target.classList.contains("item_erase")) {
+        const targetItem = target.parentNode;
+        const targetIndex = targetItem.getAttribute("data-idx");
+        items.splice(targetIndex, 1);
+
+        return items;
     }
 }
 
-const calcWirteSize = (e, element) => {
-    element.writecalc.innerText = e.target.value;
-    element.writewrap.style.width = `${element.writecalc.offsetWidth + 30}px`;
-}
-
-export { defaultComponent, interestComponent, interestItems, calcWirteSize };
+export { baseTemplate, itemComponent, addItems, eraseItems };
