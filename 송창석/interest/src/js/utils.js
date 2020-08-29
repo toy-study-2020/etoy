@@ -10,4 +10,4 @@ const connectTag = (arr, cb) => {
 
 const renderTag = (targetElement, renderItem) => targetElement.innerHTML = renderItem;
 
-export { connectTag, renderTag, eraseTag }
+export { connectTag, renderTag }
