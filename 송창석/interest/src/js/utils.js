@@ -1,13 +1,7 @@
-const connectHtml = (arr, cb) => {
-    if(arr != undefined) {
-        const list = arr.reduce((acc, cur, idx) => {
-            return acc += cb(cur, idx);
-        }, "");
-    
-        return list;
-    }
-};
+const renderHtml = (targetElement, renderItem, direction) => targetElement.insertAdjacentHTML(direction, renderItem);
 
-const renderHtml = (targetElement, renderItem) => targetElement.innerHTML = renderItem;
+const eraseHtml = (targetElement, interest) => {
+    if(targetElement != undefined) return interest.removeChild(targetElement);
+}
 
-export { connectHtml, renderHtml };
+export { renderHtml, eraseHtml };

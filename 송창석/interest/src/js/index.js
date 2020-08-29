@@ -1,33 +1,44 @@
-import { connectHtml, renderHtml } from "./utils.js";
-import { defaultComponent, interestComponent, interestItems, eraseItems } from "./interestComponent.js";
+import { eraseHtml, renderHtml } from "./utils.js";
+import { defaultComponent, interestComponent, interestItems, calcWirteSize } from "./interestComponent.js";
 
 const root = document.querySelector('#app');
 
 const render = () => {
     const defaultRender = defaultComponent();
-    renderHtml(root, defaultRender);
+    renderHtml(root, defaultRender, "beforeend");
 
     const element = {
         interest: document.querySelector(".interest"),
-        write: document.querySelector(".write_interest"),
-        list: document.querySelector(".list_interest"),
-        items: [],
-        erase: null
+        writewrap: document.querySelector(".write_wrap"),
+        writecalc: document.querySelector(".write_calc"),
+        writearea: document.querySelector(".write_interest"),
     };
 
-    element.write.addEventListener("keyup", (event) => {
-        renderItem(event, element, interestItems)
+    element.writearea.addEventListener("keydown", (event) => {
+        calcWirteSize(event, element);
     });
 
-    element.list.addEventListener("click", (event) => {
-        if(event.target.classList.contains("item_erase")) renderItem(event, element, eraseItems);
-    })
-}
+    element.writearea.addEventListener("keyup", (event) => {
+        calcWirteSize(event, element);
+        
+        const writeObj = interestItems(event, element);
+        if(writeObj != undefined) {
+            const isValue = writeObj.value != "" ? true : false;
+            const isCode = writeObj.code != 188 ? true: false;
+            const interestRender = interestComponent(writeObj.value.substr(0, writeObj.value.length - 1));
+            
+            if(isValue && !isCode) renderHtml(element.writewrap, interestRender, "beforebegin");
+            if(!isValue && isCode) eraseHtml(writeObj.eraseTarget, element.interest);
+        }
+    });
 
-const renderItem = (e, element, sortItems) => {
-    const listArr = sortItems(e, element.items);
-    const listRender = connectHtml(listArr, interestComponent);
-    if(listRender != undefined) renderHtml(element.list, listRender);
+    element.interest.addEventListener("click", (event) => {
+        if(event.target.classList.contains("item_erase")) {
+            const eraseTarget = event.target.parentNode;
+            element.writearea.focus();
+            eraseHtml(eraseTarget, element.interest);
+        }
+    })
 }
 
 

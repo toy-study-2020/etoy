@@ -4,41 +4,39 @@ const defaultComponent = () => {
     return `<div class="${CLASS_NAME.wrap}">
         <h2 class="${CLASS_NAME.title}">관심사</h2>
         <div class="${CLASS_NAME.interest}">
-            <div class="${CLASS_NAME.list}"></div>
-            <textarea id="toWrite" class="${CLASS_NAME.write}" tabindex="1" rows="1"></textarea>
+            <div class="${CLASS_NAME.writeWrap}">
+                <span class="${CLASS_NAME.writeCalc}"></span>
+                <textarea id="toWrite" class="${CLASS_NAME.writearea}" tabindex="1" rows="1"></textarea>
+            </div>
         </div>
     </div>`
 }
 
-const interestComponent = (cur, idx) => {
-    return `<div class="${CLASS_NAME.item}" data-idx="${idx}">${cur}<button type="button" class="${CLASS_NAME.erase}"></button></div>`
+const interestComponent = (value) => {
+    return `<div class="${CLASS_NAME.item}">${value}<button type="button" class="${CLASS_NAME.erase}"></button></div>`
 }
 
-const eraseItems = (e, items) => {
-    const targetObj = {
-        item: e.target.parentNode,
-        idx: e.target.parentNode.getAttribute("data-idx")
-    }
-
-    items.splice(targetObj.idx, 1);
-    return items;
-}
-
-const interestItems = (e, items) => {
-    let value = e.target.value;
+const interestItems = (e, element) => {
     const code = e.keyCode;
-
-    if(code === 188) {
-        value = value.substr(0, value.length - 1);
-        if(value != "") items.push(value);
-    }
-    if(code === 46) items.shift();
-    if(code === 8) items.pop();
-    if(code === 188 || code === 46 || code === 8) {
-        e.target.value = "";
-        return items;
+    const value = e.target.value;
+    const itemArr = element.interest.querySelectorAll(".item_interest");
+    let eraseTarget = null;
+    
+    if(code === 188) e.target.value = "";
+    if(code === 46) eraseTarget = itemArr[0];
+    if(code === 8) eraseTarget = itemArr[itemArr.length - 1];
+    if (code === 188 || code === 46 || code === 8) {
+        return {
+            value,
+            eraseTarget,
+            code
+        }
     }
 }
 
+const calcWirteSize = (e, element) => {
+    element.writecalc.innerText = e.target.value;
+    element.writewrap.style.width = `${element.writecalc.offsetWidth + 30}px`;
+}
 
-export { defaultComponent, interestComponent, interestItems, eraseItems };
+export { defaultComponent, interestComponent, interestItems, calcWirteSize };

@@ -17,6 +17,7 @@
 }
 
 .interest {
+    overflow: hidden;
     padding: 5px;
     position: relative;
     background-color: #fff;
@@ -31,10 +32,14 @@
     font-size: 0;
 }
 
+.list_interest {
+    overflow: hidden;
+}
 .item_interest {
     display: inline-block;
     vertical-align: middle;
     margin-right: 3px;
+    margin-bottom: 3px;
     padding: 5px 30px 5px 5px;
     position: relative;
     font-weight: bold;
@@ -75,9 +80,33 @@
     transform: rotate(-45deg);
 }
 
-.write_interest {
-    border: 1px solid red;
+.write_wrap {
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 3px;
+}
+
+.write_wrap > * {
+    overflow: hidden;
+    display: inline-block;
+    width: auto;
     padding: 5px;
     font-weight: bold;
     font-size: 14px;
+    min-width: 30px;
+}
+
+.write_calc {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+}
+
+.write_interest {
+    border: 1px solid red;
+    width: 100%;
+    position: relative;
+    z-index: 1;
 }
