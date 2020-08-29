@@ -1,5 +1,4 @@
-import { listWrap, input } from "./setElement.js";
-import { initializationInput } from "./initializationInput.js";
+import { listWrap, input, initializationInput } from "./utils.js";
 
 function removeList(evt) {
     if (!listWrap.lastElementChild) return;

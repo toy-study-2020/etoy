@@ -1,15 +1,11 @@
-import { input } from "./setElement.js";
-import { initializationInput } from "./initializationInput.js";
+import { input, initializationInput } from "./utils.js";
 import { removeList, addList } from "./manageList.js";
-
-function keycheck(evt) {
-    return evt.which ? evt.which : event.keyCode;
-}
 
 input.addEventListener('keyup', function(e) {
     const value = this.value.replace(/,/gi, "");
+    const keyCheck = e.which ? e.which : event.keyCode;
 
-    switch (keycheck(e)) {
+    switch (keyCheck) {
         case 188:
             if (!value) return initializationInput(input);
 
