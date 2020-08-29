@@ -17,10 +17,7 @@ const itemComponent = (value, index) => {
     return `<div class="${ITEM}" data-idx="${index}">${value}<button type="button" class="${ERASE}"></button></div>`
 }
 
-const addItems = (e, items) => {
-    const value = e.target.value;
-    e.target.value = "";
-    
+const addItems = (value, items) => {
     if(value != ",") {
         items.push(value.substr(0, value.length - 1));
         return items;
