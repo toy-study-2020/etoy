@@ -2,10 +2,10 @@ function rederHTML() {
     const app = document.querySelector('#app');
 
     app.innerHTML = '<h1>관심사</h1>' +
-        '<div class="input__container">' +
-        '<ul></ul>' +
-        '<input type="text">' +
-        '</div>';
+                    '<div class="input__container">' +
+                        '<ul></ul>' +
+                        '<input type="text">' +
+                    '</div>';
 }
 
 function getSlector(el, elContainer) {
