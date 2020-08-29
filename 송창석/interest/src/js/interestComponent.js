@@ -19,16 +19,17 @@ const itemComponent = (value, index) => {
 
 const addItems = (e, items) => {
     const value = e.target.value;
-
-    if(value != ",") items.push(value.substr(0, value.length - 1));
     e.target.value = "";
-    return items;
+    
+    if(value != ",") {
+        items.push(value.substr(0, value.length - 1));
+        return items;
+    }
 }
 
 const eraseItems = (idx, items) => {
     items.splice(idx, 1);
-
     return items;
 }
 
-export { baseTemplate, itemComponent, addItems, eraseItems };
+export { baseTemplate, itemComponent, addItems, eraseItems }

@@ -1,11 +1,9 @@
 const connectTag = (arr, cb) => {
-    if(arr != undefined) {
-        const tag = arr.reduce((acc, cur, idx) => {
-            return acc += cb(cur, idx)
-        }, "");
-    
-        return tag;
-    }
+    const tag = arr.reduce((acc, cur, idx) => {
+        return acc += cb(cur, idx)
+    }, "");
+
+    return tag;
 }
 
 const resetTag = (interest) => {
@@ -15,10 +13,6 @@ const resetTag = (interest) => {
     }
 }
 
-// const renderTag = (targetElement, renderItem) => targetElement.innerHTML = renderItem;
-
-const renderTag = (targetElement, renderItem, dir) => {
-    targetElement.insertAdjacentHTML(dir, renderItem)
-}
+const renderTag = (targetElement, renderItem, dir) => targetElement.insertAdjacentHTML(dir, renderItem)
 
 export { connectTag, renderTag, resetTag }

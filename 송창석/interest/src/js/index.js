@@ -16,10 +16,13 @@ const setEvent = (element) => {
     const { write, interest, items } = element;
     write.addEventListener("keyup", (e) => {
         const code = e.keyCode;
+
         if(code === 188) {
             const itemsArr = addItems(e, items);
-            const setTag = itemComponent(itemsArr[itemsArr.length - 1], itemsArr.length -1)
-            renderTag(write, setTag, "beforebegin");
+            if(itemsArr != undefined) {
+                const setTag = itemComponent(itemsArr[itemsArr.length - 1], itemsArr.length -1);
+                renderTag(write, setTag, "beforebegin");
+            }
         }
         if(code === 46 || code === 8) {
             resetTag(interest);
@@ -38,6 +41,7 @@ const setEvent = (element) => {
             const itemsArr = eraseItems(targetIndex, items);
             const setTag = connectTag(itemsArr, itemComponent);
             renderTag(write, setTag, "beforebegin");
+            
             write.focus();
         }
     })
