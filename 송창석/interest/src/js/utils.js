@@ -8,6 +8,17 @@ const connectTag = (arr, cb) => {
     }
 }
 
-const renderTag = (targetElement, renderItem) => targetElement.innerHTML = renderItem;
+const resetTag = (interest) => {
+    const itemsTag = interest.querySelectorAll(".item_interest");
+    for(let i = 0; i < itemsTag.length; i++) {
+        interest.removeChild(itemsTag[i]);
+    }
+}
 
-export { connectTag, renderTag }
+// const renderTag = (targetElement, renderItem) => targetElement.innerHTML = renderItem;
+
+const renderTag = (targetElement, renderItem, dir) => {
+    targetElement.insertAdjacentHTML(dir, renderItem)
+}
+
+export { connectTag, renderTag, resetTag }
