@@ -25,7 +25,7 @@ class Interest {
         this.arr = [];
         this.isWrite = false;
         
-        this.input.addEventListener('keypress', e => this.onCreateItem(e));
+        this.input.addEventListener('keyup', e => this.onCreateItem(e));
         this.input.addEventListener('keydown', e => this.onDeleteItem(e));
         this.el.addEventListener('click', e => this.onDeleteClick(e));
     }
@@ -34,10 +34,10 @@ class Interest {
         const key = e.keyCode;
         let value = "";
 
-        if (key !== 44) return;
         if (this.isWrite !== false) return;
 
         this.isWrite = true;
+        if (key !== 188) return;
         value = e.target.value.trim();
 
         setTimeout(function() {
