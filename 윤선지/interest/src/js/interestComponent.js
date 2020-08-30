@@ -23,8 +23,6 @@ class Interest {
         this.speed = INTEREST_OPT_NAME.SPEED;
         this.deleteBtn = INTEREST_CLASS_NAME.DELETE;
         this.arr = [];
-        this.isWrite = false;
-        
         this.input.addEventListener('keyup', e => this.onCreateItem(e));
         this.input.addEventListener('keydown', e => this.onDeleteItem(e));
         this.el.addEventListener('click', e => this.onDeleteClick(e));
@@ -34,16 +32,10 @@ class Interest {
         const key = e.keyCode;
         let value = "";
 
-        if (this.isWrite !== false) return;
-
-        this.isWrite = true;
         if (key !== 188) return;
+        
         value = e.target.value.trim();
-
-        setTimeout(function() {
-            this.validator(value + this.division);
-            this.isWrite = false;
-        }.bind(this), this.speed);
+        this.validator(value + this.division);
     }
 
     onDeleteItem(e) {
