@@ -1,14 +1,19 @@
 import { INTEREST_OBJ } from './constants.js';
 import btnComponent from './btnComponent.js';
 
-const interestComponent = async() => {
+let interestTarget = {};
+
+const interestTemplate = (setOpt) => {
+    interestTarget = Object.assign(INTEREST_OBJ, setOpt);
+    const {WRAP, BTNAREA, INPUT, PLACEHOLDER} = interestTarget;
+    
     return `
-    <div class="${INTEREST_CLASS_NAME.WRAP}">
-        <div class="${INTEREST_CLASS_NAME.BTNAREA}"></div>
+    <div class="${WRAP}">
+        <div class="${BTNAREA}"></div>
         <input 
             type="text" 
-            class="${INTEREST_CLASS_NAME.INPUT}" 
-            placeholder="${INTEREST_OPT_NAME.PLACEHOLDER}"
+            class="${INPUT}" 
+            placeholder="${PLACEHOLDER}"
         >
     </div>
     `;
@@ -16,13 +21,13 @@ const interestComponent = async() => {
 
 class Interest {
     constructor () {
-        this.el = document.querySelector(`.${INTEREST_CLASS_NAME.WRAP}`);
-        this.input = this.el.querySelector(`.${INTEREST_CLASS_NAME.INPUT}`);
-        this.btnArea = this.el.querySelector(`.${INTEREST_CLASS_NAME.BTNAREA}`);
-        this.division = INTEREST_OPT_NAME.DIVISION;
-        this.speed = INTEREST_OPT_NAME.SPEED;
-        this.deleteBtn = INTEREST_CLASS_NAME.DELETE;
+        this.el = document.querySelector(`.${interestTarget.WRAP}`);
+        this.input = this.el.querySelector(`.${interestTarget.INPUT}`);
+        this.btnArea = this.el.querySelector(`.${interestTarget.BTNAREA}`);
+        this.division = interestTarget.DIVISION;
+        this.deleteBtn = interestTarget.DELETE;
         this.arr = [];
+       
         this.input.addEventListener('keyup', e => this.onCreateItem(e));
         this.input.addEventListener('keydown', e => this.onDeleteItem(e));
         this.el.addEventListener('click', e => this.onDeleteClick(e));
@@ -78,9 +83,9 @@ class Interest {
     }
 
     updateView () {
-        this.btnArea.innerHTML = btnComponent(this.arr);
+        this.btnArea.innerHTML = btnComponent(this.arr, interestTarget);
         this.reset();
     }
 }
 
-export { interestComponent, Interest };
+export { interestTemplate, Interest };

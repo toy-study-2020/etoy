@@ -1,4 +1,5 @@
-.input_text_area {
+.input_text_area,
+.inputText2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
