@@ -1,4 +1,4 @@
-import { INTEREST_CLASS_NAME, INTEREST_OPT_NAME } from './constants.js';
+import { INTEREST_OBJ } from './constants.js';
 import btnComponent from './btnComponent.js';
 
 const interestComponent = async() => {

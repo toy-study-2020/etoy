@@ -1,15 +1,11 @@
-const INTEREST_CLASS_NAME = {
+const INTEREST_OBJ = {
     WRAP: 'input_text_area',
     INPUT: 'input_text',
     BTNAREA: 'btn_area',
     BTN: 'unit',
-    DELETE: 'btn_delete'
-};
-
-const INTEREST_OPT_NAME = {
+    DELETE: 'btn_delete',
     DIVISION: ',',
-    PLACEHOLDER: ',로 구분해주세요',
-    SPEED: 200,
+    PLACEHOLDER: ',로 구분해주세요'
 };
 
-export { INTEREST_CLASS_NAME, INTEREST_OPT_NAME };
+export { INTEREST_OBJ };
