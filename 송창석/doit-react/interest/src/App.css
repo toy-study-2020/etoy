@@ -1,3 +1,5 @@
+/* reset */
+
 html,
 body,
 div,
@@ -118,6 +120,7 @@ blockquote,
 q {
     quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -125,6 +128,7 @@ q:after {
     content: '';
     content: none;
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -144,8 +148,11 @@ input {
     -moz-appearance: none;
     appearance: none;
     padding: 0;
-    margin : 0;
+    margin: 0;
     border: 0;
     box-sizing: border-box;
 }
-input:focus{outline:none}
+
+input:focus {
+    outline: none
+}
