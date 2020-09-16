@@ -1,0 +1,324 @@
+#wrap {
+    overflow: hidden;
+    width: 100%;
+    text-align: center
+}
+
+.clearfix:after {
+    content: '';
+    display: block;
+    clear: both
+}
+
+/* 검색폼 */
+.search_inner {
+    width: 100%;
+    padding: 30px;
+    background-color: #e7e7e7
+}
+
+#search {
+    position: relative
+}
+
+#search.has_value .relate {
+    display: block
+}
+
+.input {
+    display: block;
+    width: 100%;
+    height: 100%
+}
+
+.input input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    border: 1px solid #222
+}
+
+.input input:focus {
+    border-color: #1D4CD8
+}
+
+.relate {
+    display: none;
+    position: absolute;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    z-index: 700;
+}
+
+.relate .close {
+    background-color: #e7e7e7;
+    padding: 10px 15px;
+    text-align: right
+}
+
+.relate .close button {
+    text-decoration: underline;
+    cursor: pointer
+}
+
+.relate .related_list a,
+.relate .related_list button {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 10px 15px;
+    text-align: left;
+    background-color: transparent
+}
+
+.relate .related_list a:focus,
+.relate .related_list a:hover,
+.relate .related_list button:focus,
+.relate .related_list button:hover,
+.relate .related_list a.focused,
+.relate .related_list button.focused {
+    color: #1D4CD8;
+    background-color: rgba(175, 192, 245, 0.3);
+    outline: none
+}
+
+/* gnb */
+#gnb {
+    padding: 10px 30px;
+    border-bottom: 1px solid #e2e2e2
+}
+
+#gnb>.gnb_main {
+    float: left
+}
+
+#gnb>.gnb_side {
+    float: right;
+    padding-left: 50px;
+    border-left: 1px solid #e7e7e7
+}
+
+#gnb ul li {
+    float: left
+}
+
+#gnb ul li+li {
+    margin-left: 15px
+}
+
+#gnb ul a {
+    display: block;
+    padding: 8px;
+    font-size: 15px;
+    letter-spacing: -0.75px
+}
+
+
+/* 메인공통 */
+.main_sec {
+    padding: 30px;
+    text-align: left;
+}
+
+.main_sec .title {
+    font-weight: 500;
+    font-size: 24px;
+    color: #333;
+}
+
+.box_cont {
+    display: block;
+    position: relative;
+}
+
+.box_list li {
+    float: left;
+    width: 30%;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.box_list li+li {
+    margin-left: 20px;
+}
+
+.box_list li:nth-of-type(3n + 1) {
+    margin-left: 0
+}
+
+.box_list .img_area {
+    overflow: hidden;
+    display: block;
+    height: 220px;
+}
+
+.box_list .img_area img {
+    width: 100%;
+}
+
+.box_list .desc_area {
+    min-height: 100px;
+    padding: 15px 10px;
+    border-top: 1px solid #ddd;
+}
+
+.box_list .desc_area dt,
+.box_list .desc_area dd {
+    font-size: 15px;
+}
+
+.box_list .desc_area dt {
+    padding-bottom: 8px;
+    font-weight: bold;
+    color: #000;
+}
+
+.box_list .desc_area dd {
+    color: #666;
+}
+
+.box_list .desc_area dd .badge {
+    display: block;
+    margin: 5px 0;
+    font-weight: bold;
+    color: skyblue;
+}
+
+/* 공식스토어 */
+.store_list li {
+    float: left;
+    width: 124px;
+    margin-top: 20px;
+}
+
+.store_list li+li {
+    margin-left: 20px;
+}
+
+.store_list a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.store_list .circle-img {
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    padding-top: 100%;
+    position: relative;
+    border-radius: 50%;
+    background-color: #e7e7e7;
+}
+
+.store_list .circle-img img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.store_list .circle-img+span {
+    display: block;
+    padding-top: 15px;
+    font-size: 15px;
+}
+
+/* 베스트 핫딜 */
+#main_best {
+    background-color: #e7e7e7;
+}
+
+.best_cont .discount {
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    width: 60px;
+}
+
+.best_cont .discount>* {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    text-align: center;
+}
+
+.best_cont .discount .rate {
+    font-weight: bold;
+    font-size: 15px;
+    color: #fff;
+    background-color: #ff2234;
+}
+
+.best_cont .discount .fee {
+    border: 1px solid #ddd;
+    font-weight: bold;
+    color: #000;
+    font-size: 12px;
+}
+
+.best_cont .desc_area .price {
+    padding-top: 15px;
+}
+
+.best_cont .desc_area .price:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.best_cont .desc_area .price>* {
+    display: inline-block;
+    position: relative;
+}
+
+.best_cont .desc_area .price .origin {
+    float: left;
+    padding: 0 2px;
+    font-size: 13px;
+    color: #5d5d5d;
+}
+
+.best_cont .desc_area .price .origin:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #5d5d5d;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+}
+
+.best_cont .desc_area .price .now {
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff2234;
+}
+
+.best_cont .desc_area .price .origin:before,
+.best_cont .desc_area .price .now:before {
+    content: '$';
+}
+
+/* 찬스상품 */
+#main_chance .desc_area dt strong:before,
+#main_chance .desc_area dt small:before {
+    content: '$';
+}
+
+#main_chance .desc_area dt small {
+    margin-left: 10px;
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    text-decoration-line: line-through;
+}
