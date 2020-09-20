@@ -1,8 +1,8 @@
-const setStorage = arr => localStorage.setItem("currentInterest", arr);
+const saveLocalStorage = arr => localStorage.setItem("currentInterest", JSON.stringify(arr));
 
-const getStorage = () => localStorage.getItem("currentInterest") != null ? localStorage.getItem("currentInterest").split(",").filter(it => it !== "") : []
+const checkLocalStorage = () => localStorage.getItem("currentInterest")
 
 export {
-    setStorage,
-    getStorage,
+    saveLocalStorage,
+    checkLocalStorage,
 }
