@@ -1,0 +1,66 @@
+$black: #000;
+$silver: #666;
+
+.input_text_area {
+    display: flex;
+    height: 40px;
+    border: 1px solid $silver;
+    border-radius: 5px;
+}
+
+.btn_area {
+    overflow: hidden;
+    flex-shrink: 0;
+    height: 100%;
+    padding: 4px 0 0 10px;
+}
+
+.unit {
+  float: left;
+  display: inline-block;
+  padding: 0 5px;
+  margin-left: 5px;
+  height: 30px;
+  border: 1px solid $silver;
+  font-size: 14px;
+  line-height: 30px;
+  border-radius: 5px;
+
+  &:first-child {
+      margin-left: 0;
+  }
+
+  > div {
+      display: inline-block;
+  }
+}
+
+.btn_delete {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-top: 3px;
+    background: silver;
+    border: 0;
+    vertical-align: top;
+}
+
+.input_text {
+  width: 100%;
+  padding: 0 20px 0 10px;
+  box-sizing: border-box;
+  flex-shrink: 1;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: none;
+  font-size: 14px;
+  line-height: 40px;
+}
+
+.inputText2 {
+    display: flex;
+    height: 40px;
+    border: 1px solid $silver;
+    border-radius: 5px;
+}

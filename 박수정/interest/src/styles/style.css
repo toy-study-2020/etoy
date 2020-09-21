@@ -1,0 +1,66 @@
+body {
+  background-color: #f0f1f6;
+}
+
+#app {
+  padding: 50px;
+}
+
+#app h1 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#app .input__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  height: 35px;
+  padding: 7px 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #fff;
+}
+
+#app .input__container ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#app .input__container ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 5px;
+  padding: 0 5px;
+  border: 1px solid #ddd;
+  background: #f0f1f6;
+  border-radius: 5px;
+}
+
+#app .input__container ul li button {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid #000;
+}
+
+#app input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border: none;
+  background: transparent;
+  outline: 0;
+}
